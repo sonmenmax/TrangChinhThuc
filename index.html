@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MENMAX | Sơn Quốc Tế Cao Cấp</title>
+<!-- Đã thay đổi sang bộ font Outfit và Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --orange:#FF5C1A;
+  --orange2:#FF8A50;
+  --orange-pale:#FFF0E8;
+  --teal:#00C2A8;
+  --teal2:#1DE9B6;
+  --teal-pale:#E0FBF7;
+  --yellow:#FFD60A;
+  --purple:#7B5EFF;
+  --coral:#FF3F6C;
+  --green:#22C55E;
+  --blue:#3B82F6;
+  --ink:#0F0F1A;
+  --ink2:#1E1E30;
+  --body:#3A3A52;
+  --muted:#8888A4;
+  --surface:#FFFFFF;
+  --bg:#FFF8F2;
+  --bg2:#F5F0FF;
+  --border:rgba(15,15,26,.08);
+}
+body{background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;cursor:none;line-height:1.7}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:4px}
+
+/* ===== CURSOR ===== */
+#cur,#cur2{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
+#cur{width:12px;height:12px;background:var(--orange);transition:width .2s,height .2s,background .2s}
+#cur2{width:40px;height:40px;border:1.5px solid var(--orange);z-index:9998;transition:all .45s cubic-bezier(.17,.67,.35,.98);opacity:.3}
+
+/* ===== UTILITIES ===== */
+.container{width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(18px,5vw,60px)}
+.sp{padding:clamp(60px,9vw,120px) 0}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--orange-pale);color:var(--orange);font-size:clamp(.65rem,1.5vw,.75rem);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:999px;margin-bottom:clamp(14px,2vw,20px)}
+.tag.t{background:var(--teal-pale);color:var(--teal)}
+.tag.p{background:#EDE9FF;color:var(--purple)}
+/* Đổi font h2 và tinh chỉnh kích thước dịu hơn */
+.h2{font-family:'Outfit',sans-serif;font-size:clamp(1.85rem,4.5vw,3.2rem);font-weight:700;line-height:1.15;letter-spacing:-.015em;color:var(--ink)}
+.h2 em{font-style:normal;color:var(--orange)}
+.h2 .teal{color:var(--teal)}
+.lead{font-size:clamp(1rem,2vw,1.15rem);line-height:1.8;color:var(--body);font-weight:400}
+.body-t{font-size:clamp(.95rem,1.8vw,1.05rem);line-height:1.75;color:var(--body)}
+
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:clamp(.88rem,1.8vw,.95rem);text-decoration:none;border:none;cursor:none;transition:all .3s ease;border-radius:999px}
+.btn-o{background:var(--orange);color:#fff;padding:clamp(14px,2vw,16px) clamp(24px,3vw,32px);box-shadow:0 6px 20px rgba(255,92,26,.25)}
+.btn-o:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,92,26,.35)}
+.btn-g{background:transparent;color:var(--ink);padding:clamp(13px,2vw,15px) clamp(22px,3vw,30px);border:1.5px solid rgba(15,15,26,.15)}
+.btn-g:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+.arr{transition:transform .3s ease}
+.btn:hover .arr{transform:translateX(5px)}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:clamp(64px,8vw,80px);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px,5vw,60px);background:rgba(255,248,242,.0);backdrop-filter:blur(0px);transition:background .4s,backdrop-filter .4s,box-shadow .4s}
+nav.scrolled{background:rgba(255,248,242,.96);backdrop-filter:blur(16px);box-shadow:0 4px 30px rgba(0,0,0,.04)}
+.logo{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,3vw,1.75rem);font-weight:800;letter-spacing:-.01em;text-decoration:none;color:#fff;transition:color .4s}
+nav.scrolled .logo{color:var(--ink)}
+.logo span{color:var(--orange)}
+.nav-menu{display:flex;align-items:center;gap:clamp(16px,2.5vw,36px);list-style:none}
+.nav-menu a{font-size:clamp(.85rem,1.6vw,.9rem);font-weight:600;color:rgba(255,255,255,.9);text-decoration:none;transition:color .25s;letter-spacing:.3px}
+nav.scrolled .nav-menu a{color:var(--ink)}
+.nav-menu a:hover{color:var(--orange)}
+.nav-cta{background:var(--orange);color:#fff!important;padding:10px 24px;border-radius:999px;font-weight:600!important;box-shadow:0 4px 16px rgba(255,92,26,.25);transition:all .3s ease!important}
+.nav-cta:hover{background:var(--orange2)!important;transform:translateY(-2px)!important}
+
+/* hamburger */
+.ham{display:none;flex-direction:column;gap:6px;cursor:none;background:none;border:none;padding:4px}
+.ham span{width:26px;height:2px;border-radius:2px;transition:all .3s;display:block;background:#fff}
+nav.scrolled .ham span{background:var(--ink)}
+.mob-nav{display:none;position:fixed;inset:0;z-index:490;background:var(--bg);padding:100px 32px 40px;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1)}
+.mob-nav.open{transform:translateX(0)}
+.mob-nav a{display:block;font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,7vw,2.5rem);font-weight:700;color:var(--ink);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mob-nav a:hover{color:var(--orange)}
+.mob-cta{margin-top:28px;display:inline-block!important}
+
+/* ===== HERO VIDEO ===== */
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,20,.4) 0%,rgba(10,10,20,.3) 50%,rgba(10,10,20,.75) 100%)}
+.hero-overlay::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,92,26,.12) 0%,transparent 50%,rgba(0,194,168,.1) 100%)}
+.hero-inner{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 clamp(20px,5vw,40px);animation:hup 1s cubic-bezier(0.16, 1, 0.3, 1) both}
+@keyframes hup{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(16px);border-radius:999px;padding:8px 22px;font-size:clamp(.7rem,1.5vw,.8rem);font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.95);margin-bottom:clamp(18px,3vw,30px);animation:hup 1s .1s both}
+.bdot{width:8px;height:8px;background:var(--teal2);border-radius:50%;animation:bp 2s ease-in-out infinite}
+@keyframes bp{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
+
+/* Đổi font hero-title và thu nhỏ tỷ lệ đôi chút */
+.hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2.5rem,8vw,6.5rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;color:#fff;margin-bottom:clamp(18px,3vw,28px);animation:hup 1s .15s both}
+.hero-title .hl{color:var(--orange);font-style:italic;position:relative}
+.hero-title .hl::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--teal));border-radius:4px}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.25rem);color:rgba(255,255,255,.85);max-width:580px;margin:0 auto clamp(28px,4vw,44px);line-height:1.7;font-weight:400;animation:hup 1s .25s both}
+.hero-acts{display:flex;gap:clamp(12px,2vw,18px);justify-content:center;flex-wrap:wrap;animation:hup 1s .35s both}
+
+.scroll-ind{position:absolute;bottom:clamp(24px,4vw,40px);left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;animation:hup 1s .7s both}
+.scroll-line{width:1px;height:48px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.6));animation:sline 2s ease-in-out infinite}
+@keyframes sline{0%,100%{opacity:.3;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(10,10,20,.45);backdrop-filter:blur(24px);border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:center}
+.hstat-inner{display:flex;max-width:800px;width:100%}
+.hstat{flex:1;text-align:center;padding:clamp(18px,2.5vw,26px) 12px;border-right:1px solid rgba(255,255,255,.1)}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:700;color:var(--orange);line-height:1;display:block}
+.hstat-l{font-size:clamp(.65rem,1.3vw,.75rem);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:6px;display:block}
+
+/* ===== COLOR STRIPE ===== */
+.stripe-bar{display:flex;height:6px}
+.sb{flex:1;transition:flex .4s cubic-bezier(0.16, 1, 0.3, 1)}
+.sb:hover{flex:4}
+.s1{background:#FF5C1A}.s2{background:#FF3F6C}.s3{background:#FFD60A}.s4{background:#22C55E}
+.s5{background:#00C2A8}.s6{background:#3B82F6}.s7{background:#7B5EFF}.s8{background:#F43F5E}
+.s9{background:#FB923C}.s10{background:#06B6D4}
+
+/* ===== MARQUEE ===== */
+.mq{background:var(--surface);padding:16px 0;overflow:hidden;border-top:1px solid rgba(255,92,26,.06);border-bottom:1px solid rgba(255,92,26,.06)}
+.mq-track{display:flex;animation:mq 30s linear infinite;width:max-content}
+.mq-item{display:inline-flex;align-items:center;gap:12px;padding:0 30px;font-size:clamp(.8rem,1.6vw,.9rem);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--body);flex-shrink:0;white-space:nowrap}
+.mdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.md-o{background:var(--orange)}.md-t{background:var(--teal)}.md-y{background:var(--yellow)}.md-p{background:var(--purple)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== ABOUT ===== */
+.about{background:var(--surface)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(26px,3vw,36px)}
+.feat{display:flex;align-items:flex-start;gap:14px;background:var(--bg);border-radius:16px;padding:clamp(16px,2vw,20px);transition:transform 0.3s; cursor: none;}
+.feat:hover{transform:translateY(-3px);}
+.fic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.fio{background:var(--orange-pale)}.fit{background:var(--teal-pale)}.fiy{background:#FFFBE0}.fip{background:#EDE9FF}
+.fn{font-size:clamp(.85rem,1.6vw,.95rem);font-weight:600;color:var(--ink)}
+.fs{font-size:clamp(.75rem,1.4vw,.85rem);color:var(--muted);margin-top:4px}
+
+.av-wrap{position:relative;height:clamp(320px,45vw,500px)}
+.cb{position:absolute;border-radius:24px;box-shadow:0 12px 40px rgba(0,0,0,.06);transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1);cursor:none;overflow:hidden}
+.cb:hover{transform:translateY(-12px)!important; box-shadow:0 20px 50px rgba(0,0,0,.12);}
+.cb-in{position:absolute;bottom:0;left:0;right:0;padding:clamp(16px,2vw,24px)}
+.cb-lbl{font-size:clamp(.65rem,1.3vw,.75rem);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.cb-nm{font-family:'Outfit',sans-serif;font-size:clamp(1rem,2vw,1.3rem);font-weight:600;color:#fff;margin-top:4px}
+.cb1{width:50%;height:68%;background:linear-gradient(145deg,#FF5C1A,#FF2D00);top:0;left:0;transform:rotate(-2deg)}
+.cb2{width:42%;height:56%;background:linear-gradient(145deg,#00C2A8,#007A6E);top:4%;right:0;transform:rotate(3deg)}
+.cb3{width:38%;height:46%;background:linear-gradient(145deg,#FFD60A,#FF8F00);bottom:3%;left:4%;transform:rotate(2deg)}
+.cb4{width:36%;height:42%;background:linear-gradient(145deg,#7B5EFF,#5039CC);bottom:0;right:4%;transform:rotate(-3deg)}
+
+/* ===== PRODUCTS ===== */
+.products{background:var(--bg)}
+.ph{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:clamp(36px,5vw,60px)}
+.al{font-size:clamp(.85rem,1.6vw,.95rem);font-weight:600;color:var(--orange);text-decoration:none;display:flex;align-items:center;gap:8px;transition:gap .3s ease}
+.al:hover{gap:14px}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+/* Tăng padding và làm mềm bóng mờ */
+.pc{background:var(--surface);border-radius:24px;padding:clamp(24px,3vw,36px);border:1.5px solid transparent;position:relative;overflow:hidden;cursor:none;transition:border-color .4s,transform .4s,box-shadow .4s;box-shadow:0 8px 30px rgba(0,0,0,.03)}
+.pc::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:4px 4px 0 0;transition:height .3s}
+.pc:hover{border-color:rgba(255,92,26,.1);transform:translateY(-8px);box-shadow:0 16px 45px rgba(0,0,0,.06)}
+.pc:hover::after{height:6px}
+.p1::after{background:linear-gradient(90deg,#FF5C1A,#FF8A50)}
+.p2::after{background:linear-gradient(90deg,#00C2A8,#3B82F6)}
+.p3::after{background:linear-gradient(90deg,#FFD60A,#FF8F00)}
+.p4::after{background:linear-gradient(90deg,#7B5EFF,#3B82F6)}
+.p5::after{background:linear-gradient(90deg,#FF3F6C,#FF5C1A)}
+.p6::after{background:linear-gradient(90deg,#22C55E,#00C2A8)}
+.pico{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:clamp(16px,2vw,22px)}
+.pio{background:var(--orange-pale)}.pit{background:var(--teal-pale)}.piy{background:#FFFBE0}.pip{background:#EDE9FF}.pic{background:#FFE8EE}.pig{background:#EEFBF4}
+.pnum{font-size:clamp(.65rem,1.3vw,.75rem);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.pname{font-family:'Outfit',sans-serif;font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:600;color:var(--ink);margin-bottom:10px;line-height:1.3}
+.pdesc{font-size:clamp(.88rem,1.7vw,.95rem);line-height:1.75;color:var(--body);font-weight:400}
+.pbg{display:inline-block;margin-top:clamp(14px,2vw,20px);font-size:clamp(.65rem,1.3vw,.75rem);font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.pbo{background:var(--orange-pale);color:var(--orange)}
+.pbt{background:var(--teal-pale);color:var(--teal)}
+.pby{background:#FFFBE0;color:#B07D00}
+.pbp{background:#EDE9FF;color:var(--purple)}
+.pbc{background:#FFE8EE;color:var(--coral)}
+.pbgr{background:#EEFBF4;color:var(--green)}
+
+/* ===== PROJECTS ===== */
+.projects{background:var(--ink)}
+.pjh .h2{color:#fff}
+.pjh .tag{background:rgba(255,92,26,.15);color:var(--orange)}
+.pj-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:clamp(36px,5vw,60px)}
+.pj{border-radius:20px;overflow:hidden;position:relative;cursor:none;transition:transform .5s cubic-bezier(0.16, 1, 0.3, 1);min-height:clamp(220px,24vw,340px)}
+.pj:hover{transform:scale(1.02)}
+.pj:nth-child(1){grid-column:span 7;min-height:clamp(300px,36vw,540px)}
+.pj:nth-child(2){grid-column:span 5}
+.pj:nth-child(3){grid-column:span 4}
+.pj:nth-child(4){grid-column:span 4}
+.pj:nth-child(5){grid-column:span 4}
+.pjbg{position:absolute;inset:0;transition:transform .6s ease}
+.pj:hover .pjbg{transform:scale(1.08)}
+.bg1{background:linear-gradient(145deg,#1A237E,#3949AB)}
+.bg2{background:linear-gradient(145deg,#BF360C,#FF5722)}
+.bg3{background:linear-gradient(145deg,#1B5E20,#43A047)}
+.bg4{background:linear-gradient(145deg,#4A148C,#8E24AA)}
+.bg5{background:linear-gradient(145deg,#004D40,#00897B)}
+.pjbg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 25%,rgba(255,255,255,.1) 0%,transparent 60%)}
+.pjbg::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0,rgba(255,255,255,.02) 1px,transparent 1px,transparent 22px)}
+.pjov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(0,0,0,.85) 100%)}
+.pji{position:absolute;bottom:0;left:0;right:0;padding:clamp(20px,3vw,32px);transform:translateY(8px);transition:transform .4s ease}
+.pj:hover .pji{transform:translateY(0)}
+.pjb{display:inline-block;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 14px;font-size:clamp(.65rem,1.3vw,.75rem);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.95);margin-bottom:10px}
+.pjt{font-family:'Outfit',sans-serif;font-size:clamp(1.05rem,2.2vw,1.45rem);font-weight:700;color:#fff;line-height:1.3}
+.pj:nth-child(1) .pjt{font-size:clamp(1.3rem,3vw,2.1rem)}
+.pjm{font-size:clamp(.75rem,1.4vw,.85rem);color:rgba(255,255,255,.6);margin-top:6px}
+
+/* ===== PROCESS ===== */
+.process{background:var(--surface)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,26px);margin-top:clamp(36px,5vw,60px);position:relative}
+.proc-grid::before{content:'';position:absolute;top:clamp(26px,3vw,34px);left:clamp(52px,7vw,80px);right:clamp(52px,7vw,80px);height:2px;background:linear-gradient(90deg,var(--orange),var(--teal));z-index:0;opacity:0.3}
+.pc-card{padding:clamp(20px,2.5vw,30px) clamp(16px,2vw,24px);background:var(--bg);border-radius:20px;position:relative;z-index:1;transition:transform .4s,box-shadow .4s;cursor:none;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.02)}
+.pc-card:hover{transform:translateY(-8px);box-shadow:0 16px 45px rgba(0,0,0,.06)}
+.pc-num{width:clamp(48px,5vw,64px);height:clamp(48px,5vw,64px);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto clamp(16px,2.5vw,24px);font-family:'Outfit',sans-serif;font-size:clamp(1.05rem,2vw,1.3rem);font-weight:700;background:var(--surface);border:2px solid;position:relative}
+.pn1{color:var(--orange);border-color:var(--orange);box-shadow:0 0 0 8px rgba(255,92,26,.08)}
+.pn2{color:var(--teal);border-color:var(--teal);box-shadow:0 0 0 8px rgba(0,194,168,.08)}
+.pn3{color:var(--purple);border-color:var(--purple);box-shadow:0 0 0 8px rgba(123,94,255,.08)}
+.pn4{color:var(--green);border-color:var(--green);box-shadow:0 0 0 8px rgba(34,197,94,.08)}
+.pc-ico{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:clamp(10px,1.5vw,14px)}
+.pc-ti{font-family:'Outfit',sans-serif;font-size:clamp(1.05rem,2vw,1.2rem);font-weight:600;color:var(--ink);margin-bottom:8px}
+.pc-de{font-size:clamp(.85rem,1.7vw,.92rem);line-height:1.75;color:var(--body)}
+
+/* ===== TESTIMONIALS ===== */
+.testi{background:linear-gradient(135deg,var(--bg) 0%,var(--teal-pale) 100%)}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px);margin-top:clamp(36px,5vw,60px)}
+/* Tăng padding cho cảm giác sang trọng */
+.tc{background:var(--surface);border-radius:22px;padding:clamp(26px,4vw,42px);position:relative;overflow:hidden;cursor:none;transition:transform .4s,box-shadow .4s;border:1px solid rgba(15,15,26,.04);box-shadow:0 6px 25px rgba(0,0,0,.03)}
+.tc:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.06)}
+.tc::before{content:'';position:absolute;top:0;left:0;width:5px;bottom:0;border-radius:5px 0 0 5px}
+.t1::before{background:linear-gradient(180deg,var(--orange),var(--coral))}
+.t2::before{background:linear-gradient(180deg,var(--teal),var(--green))}
+.t3::before{background:linear-gradient(180deg,var(--purple),var(--blue))}
+.t4::before{background:linear-gradient(180deg,var(--yellow),var(--orange))}
+.tst{font-size:clamp(.9rem,1.7vw,1.05rem);letter-spacing:4px;color:var(--yellow);margin-bottom:clamp(12px,2vw,16px)}
+.ttx{font-style:italic;font-size:clamp(.92rem,1.8vw,1.05rem);line-height:1.85;color:var(--body);margin-bottom:clamp(20px,3vw,30px)}
+.tau{display:flex;align-items:center;gap:14px}
+.tav{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;flex-shrink:0}
+.av1{background:linear-gradient(135deg,var(--orange),var(--coral))}
+.av2{background:linear-gradient(135deg,var(--teal),var(--green))}
+.av3{background:linear-gradient(135deg,var(--purple),var(--blue))}
+.av4{background:linear-gradient(135deg,var(--yellow),var(--orange))}
+.tn{font-family:'Outfit',sans-serif;font-size:clamp(.9rem,1.7vw,.95rem);font-weight:600;color:var(--ink)}
+.tr{font-size:clamp(.75rem,1.4vw,.8rem);color:var(--muted);margin-top:3px}
+
+/* ===== CERTS ===== */
+.certs{background:var(--ink2);padding:clamp(44px,6vw,70px) 0}
+.ci-wrap{display:flex;flex-wrap:wrap;justify-content:center}
+.ci{flex:1;min-width:140px;max-width:220px;text-align:center;padding:clamp(22px,3vw,40px) clamp(12px,2vw,20px);border-right:1px solid rgba(255,255,255,.05);transition:background .3s;cursor:none}
+.ci:last-child{border-right:none}
+.ci:hover{background:rgba(255,255,255,.03)}
+.ci-ic{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:12px}
+.ci-n{font-family:'Outfit',sans-serif;font-size:clamp(.85rem,1.6vw,.95rem);font-weight:600;letter-spacing:1.5px;color:var(--orange);margin-bottom:6px}
+.ci-d{font-size:clamp(.7rem,1.3vw,.75rem);color:rgba(255,255,255,.4);letter-spacing:.5px}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--bg2)}
+.cg{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(40px,6vw,90px);align-items:start}
+.ci-list{margin-top:clamp(26px,3.5vw,40px);display:flex;flex-direction:column}
+.cit{display:flex;align-items:flex-start;gap:16px;padding:clamp(16px,2vw,22px) 0;border-bottom:1px solid var(--border)}
+.cit:last-child{border-bottom:none}
+.cit-ic{width:44px;height:44px;border-radius:12px;background:var(--orange-pale);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.cit-l{font-size:clamp(.65rem,1.3vw,.75rem);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+.cit-v{font-size:clamp(.9rem,1.7vw,.98rem);color:var(--ink);font-weight:500;line-height:1.6}
+.cf{background:var(--surface);border-radius:28px;padding:clamp(30px,5vw,54px);box-shadow:0 8px 40px rgba(0,0,0,.04)}
+.cf-ti{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;color:var(--ink);margin-bottom:6px}
+.cf-sub{font-size:clamp(.85rem,1.7vw,.95rem);color:var(--muted);margin-bottom:clamp(22px,3vw,32px)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.fl{font-size:clamp(.65rem,1.3vw,.75rem);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--body)}
+.fin{background:var(--bg);border:1.5px solid transparent;border-radius:12px;padding:clamp(12px,1.5vw,15px) 18px;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(.9rem,1.7vw,.98rem);color:var(--ink);outline:none;transition:border-color .3s,box-shadow .3s;cursor:none;width:100%}
+.fin:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,92,26,.1)}
+.fin::placeholder{color:var(--muted);font-weight:400}
+textarea.fin{height:110px;resize:vertical}
+.sbtn{width:100%;background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;border:none;border-radius:12px;padding:clamp(14px,2vw,18px);font-family:'Outfit',sans-serif;font-size:clamp(.95rem,1.8vw,1.05rem);font-weight:600;cursor:none;transition:all .3s ease;box-shadow:0 6px 25px rgba(255,92,26,.25);margin-top:6px}
+.sbtn:hover{opacity:.95;transform:translateY(-3px);box-shadow:0 12px 35px rgba(255,92,26,.35)}
+
+/* ===== FOOTER ===== */
+footer{background:var(--ink);padding:clamp(50px,7vw,86px) 0 clamp(26px,4vw,42px)}
+.fg-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:clamp(30px,4vw,64px);padding-bottom:clamp(32px,4vw,50px);border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:clamp(20px,3vw,36px)}
+.fl-logo{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:800;color:#fff;text-decoration:none;display:block;margin-bottom:14px;letter-spacing:-.01em}
+.fl-logo span{color:var(--orange)}
+.fl-tag{font-size:clamp(.85rem,1.7vw,.92rem);line-height:1.8;color:rgba(255,255,255,.4);max-width:260px}
+.fc h4{font-family:'Outfit',sans-serif;font-size:clamp(.7rem,1.3vw,.8rem);font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:clamp(14px,2vw,20px)}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.fc a{font-size:clamp(.85rem,1.7vw,.92rem);color:rgba(255,255,255,.45);text-decoration:none;transition:color .3s}
+.fc a:hover{color:#fff}
+.fb{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.fb-c{font-size:clamp(.7rem,1.3vw,.75rem);color:rgba(255,255,255,.25)}
+.fb-i{font-size:clamp(.7rem,1.3vw,.75rem);color:var(--orange)}
+
+/* ===== FLOAT PALETTE ===== */
+.fpal{position:fixed;right:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:8px}
+.fps{width:20px;height:20px;border-radius:50%;cursor:none;border:2px solid rgba(255,255,255,.6);box-shadow:0 3px 10px rgba(0,0,0,.15);transition:transform .3s ease}
+.fps:hover{transform:scale(1.5)}
+
+/* ===== REVEAL ===== */
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(0.16, 1, 0.3, 1),transform .7s cubic-bezier(0.16, 1, 0.3, 1)}
+.rev.vis{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media(max-width:1100px){
+  .pj:nth-child(1){grid-column:span 12}
+  .pj:nth-child(n+2){grid-column:span 6}
+  .fg-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .about-grid,.cg{grid-template-columns:1fr}
+  .pg{grid-template-columns:1fr 1fr}
+  .tg{grid-template-columns:1fr}
+  .proc-grid::before{display:none}
+  .proc-grid{grid-template-columns:1fr 1fr}
+  .fg-grid{grid-template-columns:1fr}
+  .ci-wrap{flex-wrap:wrap}
+  .ci{min-width:calc(50% - 1px)}
+  .fpal{display:none}
+}
+@media(max-width:768px){
+  nav .nav-menu{display:none}
+  .ham{display:flex}
+  .mob-nav{display:flex}
+  body{cursor:auto}
+  #cur,#cur2{display:none}
+  
+  /* --- BẮT ĐẦU PHẦN SỬA --- */
+  .hero { padding-bottom: 90px; } /* Đẩy phần chữ lên trên một chút để cân đối giữa màn hình */
+  .hero-stats { 
+    position: absolute; /* Ép khối thống kê nằm chặt ở dưới cùng đáy màn hình */
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    background: rgba(10,10,20,.85); 
+  }
+  /* --- KẾT THÚC PHẦN SỬA --- */
+
+  .scroll-ind{display:none}
+  .pj-grid,.pj:nth-child(n){grid-column:span 12!important}
+  .pj-grid{grid-template-columns:1fr!important;display:flex;flex-direction:column}
+  .feat-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .pg{grid-template-columns:1fr}
+  .proc-grid{grid-template-columns:1fr}
+  .hero-acts{flex-direction:column;align-items:center}
+  .btn{width:100%;justify-content:center;max-width:300px}
+  .row2{grid-template-columns:1fr}
+  
+  /* --- BẮT ĐẦU PHẦN SỬA KHỐI THỐNG KÊ (2x2) --- */
+  .hstat-inner{flex-wrap:wrap}
+  .hstat{
+    min-width:50%; 
+    padding: 18px 10px; /* Thêm không gian cho chữ dễ đọc hơn */
+  }
+  .hstat:nth-child(1), .hstat:nth-child(2) {
+    border-bottom: 1px solid rgba(255,255,255,.08); /* Thêm đường kẻ ngang giữa 2 hàng */
+  }
+  .hstat:nth-child(even) {
+    border-right: none; /* Xóa đường kẻ dọc ở ngoài cùng bên phải */
+  }
+  /* --- KẾT THÚC PHẦN SỬA --- */
+
+  .ci{min-width:100%;border-right:none;border-bottom:1px solid rgba(255,255,255,.05)}
+  .fb{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div><div id="cur2"></div>
+
+<!-- Float palette -->
+<div class="fpal">
+  <div class="fps" style="background:#FF5C1A"></div>
+  <div class="fps" style="background:#FF3F6C"></div>
+  <div class="fps" style="background:#FFD60A"></div>
+  <div class="fps" style="background:#22C55E"></div>
+  <div class="fps" style="background:#00C2A8"></div>
+  <div class="fps" style="background:#3B82F6"></div>
+  <div class="fps" style="background:#7B5EFF"></div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="logo" href="#">MEN<span>MAX</span></a>
+  <ul class="nav-menu">
+    <li><a href="#gioi-thieu">Giới Thiệu</a></li>
+    <li><a href="#san-pham">Sản Phẩm</a></li>
+    <li><a href="#cong-trinh">Công Trình</a></li>
+    <li><a href="#quy-trinh">Quy Trình</a></li>
+    <li><a href="#lien-he" class="nav-cta">📞 Liên Hệ</a></li>
+  </ul>
+  <button class="ham" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#gioi-thieu" onclick="cM()">Giới Thiệu</a>
+  <a href="#san-pham" onclick="cM()">Sản Phẩm</a>
+  <a href="#cong-trinh" onclick="cM()">Công Trình</a>
+  <a href="#quy-trinh" onclick="cM()">Quy Trình</a>
+  <a href="#lien-he" onclick="cM()">Liên Hệ</a>
+  <a href="tel:0855327713" class="btn btn-o mob-cta" onclick="cM()">📞Nhấn vào đây</a>
+</div>
+
+<!-- HERO VIDEO -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="bdot"></div>
+      Từ 2005 · Công Nghệ Nhật Bản
+    </div>
+    <h1 class="hero-title">
+      Màu Sắc <span class="hl">Bất Tận</span>
+    </h1>
+    <p class="hero-sub">Sơn MENMAX — kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam.</p>
+    <div class="hero-acts">
+      <a class="btn btn-o" href="#san-pham">🎨 Khám Phá Sản Phẩm <span class="arr">→</span></a>
+      <a class="btn btn-g" href="#cong-trinh" style="color:#fff;border-color:rgba(255,255,255,.3)">Xem Công Trình</a>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    Cuộn xuống
+  </div>
+
+  <!-- Stats bar pinned at bottom -->
+  <div class="hero-stats">
+    <div class="hstat-inner">
+      <div class="hstat"><span class="hstat-n" id="s1">0+</span><span class="hstat-l">Năm Kinh Nghiệm</span></div>
+      <div class="hstat"><span class="hstat-n" id="s2">0+</span><span class="hstat-l">Công Trình</span></div>
+      <div class="hstat"><span class="hstat-n">ISO</span><span class="hstat-l">9001:2015</span></div>
+      <div class="hstat"><span class="hstat-n">100%</span><span class="hstat-l">Chất Lượng</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIPE -->
+<div class="stripe-bar">
+  <div class="sb s1"></div><div class="sb s2"></div><div class="sb s3"></div>
+  <div class="sb s4"></div><div class="sb s5"></div><div class="sb s6"></div>
+  <div class="sb s7"></div><div class="sb s8"></div><div class="sb s9"></div><div class="sb s10"></div>
+</div>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-track">
+    <span class="mq-item"><span class="mdot md-o"></span>Sơn Nội Thất Cao Cấp</span>
+    <span class="mq-item"><span class="mdot md-t"></span>Sơn Ngoại Thất</span>
+    <span class="mq-item"><span class="mdot md-y"></span>Sơn Chống Thấm Đa Năng</span>
+    <span class="mq-item"><span class="mdot md-p"></span>Bột Bả Tường</span>
+    <span class="mq-item"><span class="mdot md-o"></span>Sơn Lót Chống Kiềm</span>
+    <span class="mq-item"><span class="mdot md-t"></span>Sơn Trang Trí</span>
+    <span class="mq-item"><span class="mdot md-y"></span>Thi Công Chuyên Nghiệp</span>
+    <span class="mq-item"><span class="mdot md-p"></span>Công Nghệ Nhật Bản</span>
+    <span class="mq-item"><span class="mdot md-o"></span>Sơn Nội Thất Cao Cấp</span>
+    <span class="mq-item"><span class="mdot md-t"></span>Sơn Ngoại Thất</span>
+    <span class="mq-item"><span class="mdot md-y"></span>Sơn Chống Thấm Đa Năng</span>
+    <span class="mq-item"><span class="mdot md-p"></span>Bột Bả Tường</span>
+    <span class="mq-item"><span class="mdot md-o"></span>Sơn Lót Chống Kiềm</span>
+    <span class="mq-item"><span class="mdot md-t"></span>Sơn Trang Trí</span>
+    <span class="mq-item"><span class="mdot md-y"></span>Thi Công Chuyên Nghiệp</span>
+    <span class="mq-item"><span class="mdot md-p"></span>Công Nghệ Nhật Bản</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about sp" id="gioi-thieu">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="tag rev">🏭 Về Chúng Tôi</div>
+        <h2 class="h2 rev rd1">Hành Trình <em>Vẽ Nên</em> Việt Nam</h2>
+        <p class="body-t rev rd2" style="margin-top:16px">Công Ty TNHH Sản Xuất Sơn Quốc Tế thành lập 2015, thương hiệu Sơn MENMAX từ 2005 với công nghệ số 1 Nhật Bản. Không ngừng đổi mới qua hàng trăm công trình khắp toàn quốc.</p>
+        <p class="body-t rev rd3" style="margin-top:12px">Sản phẩm nhiệt đới hóa hoàn toàn, tối ưu cho khí hậu Việt Nam. Được kiến trúc sư, kỹ sư và nhà thầu hàng đầu tin dùng.</p>
+        <div class="feat-grid rev rd4">
+          <div class="feat"><div class="fic fio">🏭</div><div><div class="fn">Sản Xuất Trực Tiếp</div><div class="fs">KCN Thọ Xương,P Bắc Giang , Bắc Ninh</div></div></div>
+          <div class="feat"><div class="fic fit">🇯🇵</div><div><div class="fn">Công Nghệ Nhật Bản</div><div class="fs">Số 1 thế giới về sơn</div></div></div>
+          <div class="feat"><div class="fic fiy">✅</div><div><div class="fn">ISO 9001:2015</div><div class="fs">Chứng nhận quốc tế</div></div></div>
+          <div class="feat"><div class="fic fip">🌡️</div><div><div class="fn">Nhiệt Đới Hóa</div><div class="fs">Phù hợp khí hậu VN</div></div></div>
+        </div>
+        <div style="margin-top:clamp(26px,4vw,40px)" class="rev rd4">
+          <a class="btn btn-o" href="#lien-he">Tư Vấn Miễn Phí <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="av-wrap rev">
+        <div class="cb cb1"><div class="cb-in"><div class="cb-lbl">Sơn Nội Thất</div><div class="cb-nm">Cam Rực Rỡ</div></div></div>
+        <div class="cb cb2"><div class="cb-in"><div class="cb-lbl">Chống Thấm</div><div class="cb-nm">Xanh Ngọc</div></div></div>
+        <div class="cb cb3"><div class="cb-in"><div class="cb-lbl">Sơn Lót</div><div class="cb-nm">Vàng Rạng Ngời</div></div></div>
+        <div class="cb cb4"><div class="cb-in"><div class="cb-lbl">Ngoại Thất</div><div class="cb-nm">Tím Hoàng Gia</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products sp" id="san-pham">
+  <div class="container">
+    <div class="ph">
+      <div>
+        <div class="tag t rev">🎨 Sản Phẩm</div>
+        <h2 class="h2 rev rd1">Dòng Sản Phẩm <em>Cao Cấp</em></h2>
+      </div>
+      <a class="al rev" href="#lien-he">Báo giá ngay →</a>
+    </div>
+    <div class="pg">
+      <div class="pc p1 rev"><div class="pico pio">🏠</div><div class="pnum">01</div><div class="pname">Sơn Nội Thất Cao Cấp</div><div class="pdesc">Độ bền màu vượt trội, không độc hại, an toàn gia đình. Phủ mịn đều, chống ố vàng lâu dài.</div><span class="pbg pbo">Bán Chạy #1</span></div>
+      <div class="pc p2 rev rd1"><div class="pico pit">🌧️</div><div class="pnum">02</div><div class="pname">Sơn Ngoại Thất Siêu Bền</div><div class="pdesc">Chống UV, mưa axit, nhiệt độ cao. Giữ màu tươi sáng đến 10 năm trong mọi điều kiện.</div><span class="pbg pbt">Bền 10 Năm</span></div>
+      <div class="pc p3 rev rd2"><div class="pico piy">💧</div><div class="pnum">03</div><div class="pname">Sơn Chống Thấm Đa Năng</div><div class="pdesc">Chống thấm toàn diện mái, tường, sàn. Co giãn cao, bịt kín vết nứt vi mô hiệu quả.</div><span class="pbg pby">Đa Năng</span></div>
+      <div class="pc p4 rev rd1"><div class="pico pip">🛡️</div><div class="pnum">04</div><div class="pname">Sơn Lót Chống Kiềm</div><div class="pdesc">Lớp nền hoàn hảo, ngăn kiềm tấn công, tăng độ bám dính tối đa cho lớp sơn phủ.</div><span class="pbg pbp">Nội + Ngoại</span></div>
+      <div class="pc p5 rev rd2"><div class="pico pic">✨</div><div class="pnum">05</div><div class="pname">Sơn Bóng Siêu Cao Cấp</div><div class="pdesc">Độ bóng gương, phản chiếu ánh sáng đẹp. Kháng bẩn, phù hợp không gian sang trọng.</div><span class="pbg pbc">Siêu Bóng</span></div>
+      <div class="pc p6 rev rd3"><div class="pico pig">🪣</div><div class="pnum">06</div><div class="pname">Bột Bả Tường Cao Cấp</div><div class="pdesc">Nền tảng hoàn hảo, siêu mịn, chống nứt. Dễ thi công cả nội lẫn ngoại thất.</div><span class="pbg pbgr">Nội + Ngoại</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects sp" id="cong-trinh">
+  <div class="container">
+    <div class="pjh rev">
+      <div class="tag">🏗️ Công Trình Tiêu Biểu</div>
+      <h2 class="h2" style="color:#fff;margin-top:12px">Dấu Ấn Trên <em>Từng Công Trình</em></h2>
+    </div>
+    <div class="pj-grid">
+      
+      <!-- Dự án 1: Goertek (Đã sửa link ảnh thành nhà máy/công xưởng hiện đại) -->
+      <div class="pj rev">
+        <div class="pjbg bg1" style="background-image: url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+        <div class="pjov"></div>
+        <div class="pji">
+          <span class="pjb">KCN · 2024</span>
+          <div class="pjt">Nhà Máy Goertek Vina</div>
+          <div class="pjm">Sơn nền công nghiệp & ngoại thất · Bắc Ninh</div>
+        </div>
+      </div>
+
+      <!-- Dự án 2: Ecopark Hưng Yên (Giữ nguyên) -->
+      <div class="pj rev rd1">
+        <div class="pjbg bg2" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+        <div class="pjov"></div>
+        <div class="pji">
+          <span class="pjb">Đô Thị · 2023</span>
+          <div class="pjt">Khu Biệt Thự Ecopark</div>
+          <div class="pjm">Sơn ngoại thất cao cấp · Hưng Yên</div>
+        </div>
+      </div>
+
+      <!-- Dự án 3: Vinhomes Central (Giữ nguyên) -->
+      <div class="pj rev rd2">
+        <div class="pjbg bg3" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+        <div class="pjov"></div>
+        <div class="pji">
+          <span class="pjb">Nhà Ở · 2023</span>
+          <div class="pjt">Căn Hộ Vinhomes Central</div>
+          <div class="pjm">Sơn nội thất toàn diện · TP.HCM</div>
+        </div>
+      </div>
+
+      <!-- Dự án 4: Đã thay thế Mường Thanh thành Vinhomes Ocean Park 2 (Hưng Yên) -->
+      <div class="pj rev rd1">
+        <div class="pjbg bg4" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+        <div class="pjov"></div>
+        <div class="pji">
+          <span class="pjb">Đô Thị · 2024</span>
+          <div class="pjt">Vinhomes Ocean Park 2</div>
+          <div class="pjm">Sơn ngoại thất liền kề · Hưng Yên</div>
+        </div>
+      </div>
+
+      <!-- Dự án 5: Biệt Thự Hiện Đại (Giữ nguyên) -->
+      <div class="pj rev rd2">
+        <div class="pjbg bg5" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+        <div class="pjov"></div>
+        <div class="pji">
+          <span class="pjb">Dân Dụng · 2024</span>
+          <div class="pjt">Biệt Thự Hiện Đại</div>
+          <div class="pjm">Sơn trang trí & bóng gương</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process sp" id="quy-trinh">
+  <div class="container">
+    <div style="text-align:center">
+      <div class="tag p rev" style="margin:0 auto clamp(12px,2vw,16px)">🔄 Quy Trình</div>
+      <h2 class="h2 rev rd1" style="text-align:center">Từ Tư Vấn Đến <span class="teal">Hoàn Thiện</span></h2>
+    </div>
+    <div class="proc-grid">
+      <div class="pc-card rev"><div class="pc-num pn1">01</div><div class="pc-ico">📋</div><div class="pc-ti">Khảo Sát & Tư Vấn</div><div class="pc-de">Kỹ sư đến khảo sát trực tiếp, phân tích và tư vấn giải pháp tối ưu.</div></div>
+      <div class="pc-card rev rd1"><div class="pc-num pn2">02</div><div class="pc-ico">🎨</div><div class="pc-ti">Lên Màu & Báo Giá</div><div class="pc-de">Chọn từ hơn 10.000 màu sắc. Báo giá minh bạch trong 24 giờ.</div></div>
+      <div class="pc-card rev rd2"><div class="pc-num pn3">03</div><div class="pc-ico">🏗️</div><div class="pc-ti">Thi Công Chuyên Nghiệp</div><div class="pc-de">Thợ đào tạo bài bản, quy trình ISO, đúng tiến độ cam kết.</div></div>
+      <div class="pc-card rev rd3"><div class="pc-num pn4">04</div><div class="pc-ico">🤝</div><div class="pc-ti">Bàn Giao & Bảo Hành</div><div class="pc-de">Nghiệm thu kỹ lưỡng, bàn giao 100% chất lượng, bảo hành 5 năm.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi sp">
+  <div class="container">
+    <div style="text-align:center">
+      <div class="tag rev" style="margin:0 auto clamp(12px,2vw,16px)">💬 Khách Hàng Nói Gì</div>
+      <h2 class="h2 rev rd1" style="text-align:center">Niềm Tin Từ <em>Hàng Nghìn</em> Công Trình</h2>
+    </div>
+    <div class="tg">
+      <div class="tc t1 rev"><div class="tst">★★★★★</div><div class="ttx">"Sơn MENMAX bám dính và bền màu tuyệt vời. 3 năm rồi vẫn tươi như mới. Rất ấn tượng với chất lượng và dịch vụ!"</div><div class="tau"><div class="tav av1">N</div><div><div class="tn">Nguyễn Văn Thắng</div><div class="tr">Chủ Đầu Tư · Hà Nội</div></div></div></div>
+      <div class="tc t2 rev rd1"><div class="tst">★★★★★</div><div class="ttx">"Là kiến trúc sư khó tính, MENMAX là lựa chọn hàng đầu của tôi. Màu chuẩn xác, bề mặt mịn hoàn hảo."</div><div class="tau"><div class="tav av2">T</div><div><div class="tn">Trần Thị Hương</div><div class="tr">Kiến Trúc Sư · Studio H</div></div></div></div>
+      <div class="tc t3 rev rd2"><div class="tst">★★★★★</div><div class="ttx">"Dùng MENMAX cho 200 phòng khách sạn. Chi phí hợp lý, chất lượng cao cấp, đội thi công cực chuyên nghiệp!"</div><div class="tau"><div class="tav av3">P</div><div><div class="tn">Phạm Quốc Hùng</div><div class="tr">Giám Đốc · Emerald Hotel</div></div></div></div>
+      <div class="tc t4 rev rd3"><div class="tst">★★★★★</div><div class="ttx">"Nhà thầu luôn ưu tiên MENMAX. Chống thấm tốt, không bong tróc sau nhiều mùa mưa. Đối tác tin cậy!"</div><div class="tau"><div class="tav av4">L</div><div><div class="tn">Lê Đình Tuấn</div><div class="tr">Giám Đốc · XD Minh Phát</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<div class="certs">
+  <div class="container"><div class="ci-wrap">
+    <div class="ci"><div class="ci-ic">🏆</div><div class="ci-n">ISO 9001:2015</div><div class="ci-d">Quản Lý Chất Lượng</div></div>
+    <div class="ci"><div class="ci-ic">🇯🇵</div><div class="ci-n">Japanese Tech</div><div class="ci-d">Công Nghệ Số 1 Nhật Bản</div></div>
+    <div class="ci"><div class="ci-ic">🌱</div><div class="ci-n">Eco-Friendly</div><div class="ci-d">Thân Thiện Môi Trường</div></div>
+    <div class="ci"><div class="ci-ic">⚡</div><div class="ci-n">Thành Lập 2015</div><div class="ci-d">MST: 2400764878</div></div>
+    <div class="ci"><div class="ci-ic">🗺️</div><div class="ci-n">Miền Bắc</div><div class="ci-d">Thị Trường Trọng Tâm</div></div>
+  </div></div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact sp" id="lien-he">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:clamp(36px,5vw,60px)">
+      <div class="tag rev" style="margin:0 auto clamp(12px,2vw,16px)">📬 Liên Hệ</div>
+      <h2 class="h2 rev rd1" style="text-align:center">Bắt Đầu <em>Dự Án</em> Của Bạn</h2>
+    </div>
+    <div class="cg">
+      <div class="rev">
+        <p class="lead">Đội ngũ chuyên gia sẵn sàng tư vấn miễn phí và đồng hành từ ý tưởng đến hoàn thiện.</p>
+        <div class="ci-list">
+          <div class="cit"><div class="cit-ic">📍</div><div><div class="cit-l">Văn Phòng</div><div class="cit-v">Số 167 Trần Nguyên Hãn,P Bắc Giang , Bắc Ninh</div></div></div>
+          <div class="cit"><div class="cit-ic">🏭</div><div><div class="cit-l">Sản Xuất Tại</div><div class="cit-v">KCN Thọ Xương,P Bắc Giang , Bắc Ninh</div></div></div>
+        </div>
+      </div>
+     <div class="cf rev rd2">
+        <div class="cf-ti">Nhận Tư Vấn Ngay</div>
+        <div class="cf-sub">Để lại số điện thoại, chuyên gia của chúng tôi sẽ gọi lại trong 5 phút.</div>
+        
+        <!-- Đặt id để Javascript gọi đến -->
+        <form id="contactForm" name="submit-to-google-sheet">
+          <div class="fg">
+            <label class="fl">Số Điện Thoại Của Bạn</label>
+            <!-- Name='Phone' phải khớp với e.parameter.Phone trong Apps Script -->
+            <input class="fin" type="tel" name="Phone" placeholder="Ví dụ: 0981 xxx xxx" required>
+          </div>
+          
+          <button type="submit" id="btnSubmit" class="sbtn">🚀 Yêu Cầu Gọi Lại</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="fg-grid">
+      <div>
+        <a class="fl-logo" href="#">MEN<span>MAX</span></a>
+        <p class="fl-tag">Công Ty TNHH Sản Xuất Sơn Quốc Tế — Kiến tạo vẻ đẹp bền vững cho mọi công trình Việt Nam với công nghệ hàng đầu Nhật Bản.</p>
+      </div>
+      <div class="fc"><h4>Sản Phẩm</h4><ul><li><a href="#">Sơn Nội Thất</a></li><li><a href="#">Sơn Ngoại Thất</a></li><li><a href="#">Sơn Chống Thấm</a></li><li><a href="#">Sơn Lót</a></li><li><a href="#">Bột Bả Tường</a></li></ul></div>
+      <div class="fc"><h4>Dịch Vụ</h4><ul><li><a href="#">Thi Công Sơn</a></li><li><a href="#">Tư Vấn Màu</a></li><li><a href="#">Khảo Sát Miễn Phí</a></li><li><a href="#">Bảo Hành</a></li></ul></div>
+      <div class="fc"><h4>Công Ty</h4><ul><li><a href="#">Giới Thiệu</a></li><li><a href="#">Công Trình</a></li><li><a href="#">Chứng Nhận</a></li><li><a href="#">Liên Hệ</a></li></ul></div>
+    </div>
+    <div class="fb">
+      <div class="fb-c">© 2024 Công Ty TNHH Sản Xuất Sơn Quốc Tế · MST 2400764878</div>
+      <div class="fb-i">✓ ISO 9001:2015 Certified</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxf5Sfau_EqGF2K_8-x3YQpB3VwChTX8JXH8FdDLBp2nIS95LmNP0sixByYvlThxH0j/exec';
+const form = document.forms['submit-to-google-sheet'];
+  const btnSubmit = document.getElementById('btnSubmit');
+  const phoneInput = form.elements['Phone']; // Lấy thẻ input số điện thoại
+
+  form.addEventListener('submit', e => {
+    e.preventDefault(); 
+    
+    // --- BƯỚC 1: KIỂM TRA SỐ ĐIỆN THOẠI (VALIDATION) ---
+    // Xoá các khoảng trắng hoặc dấu chấm (nếu người dùng vô tình nhập)
+    let phoneVal = phoneInput.value.replace(/[\s\.]/g, ''); 
+    
+    // Regex chuẩn cho nhà mạng Việt Nam: Bắt đầu bằng 0, tiếp theo là 3,5,7,8,9 và có chính xác 8 số cuối (Tổng 10 số)
+    const phoneRegex = /^(0)(3|5|7|8|9)[0-9]{8}$/; 
+
+    if (!phoneRegex.test(phoneVal)) {
+      // Báo lỗi trên giao diện nếu sai định dạng
+      let originalText = btnSubmit.innerHTML;
+      phoneInput.style.borderColor = '#FF3F6C'; // Viền đỏ
+      phoneInput.style.boxShadow = '0 0 0 4px rgba(255, 63, 108, 0.1)';
+      
+      btnSubmit.innerHTML = '❌ Số điện thoại không hợp lệ';
+      btnSubmit.style.background = 'linear-gradient(135deg, #FF3F6C, #E11D48)'; // Nút đỏ
+      
+      // Trả lại trạng thái bình thường sau 2.5 giây để nhập lại
+      setTimeout(() => {
+        phoneInput.style.borderColor = '';
+        phoneInput.style.boxShadow = '';
+        btnSubmit.innerHTML = originalText;
+        btnSubmit.style.background = '';
+      }, 2500);
+      
+      return; // DỪNG LẠI TẠI ĐÂY, không chạy xuống phần gửi lệnh
+    }
+
+    // Gán lại số đã được làm sạch khoảng trắng vào form trước khi gửi
+    phoneInput.value = phoneVal;
+
+
+    // --- BƯỚC 2: GỬI NGẦM (FIRE AND FORGET) GIỐNG NHƯ CŨ ---
+    let originalText = btnSubmit.innerHTML;
+    btnSubmit.innerHTML = '✅ Đã Gửi Thành Công!';
+    btnSubmit.style.background = 'linear-gradient(135deg,#22C55E,#16A34A)';
+    btnSubmit.style.opacity = '1';
+    btnSubmit.disabled = true;
+
+    const formData = new FormData(form);
+    form.reset(); 
+
+    setTimeout(() => {
+      btnSubmit.innerHTML = originalText;
+      btnSubmit.style.background = '';
+      btnSubmit.disabled = false;
+    }, 3500);
+
+    fetch(scriptURL, { 
+      method: 'POST', 
+      body: formData,
+      mode: 'no-cors' 
+    })
+    .catch(error => {
+      console.error('Lỗi gửi ngầm:', error.message);
+    });
+  });
+/* --- Cursor --- */
+const C=document.getElementById('cur'),C2=document.getElementById('cur2');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left=mx+'px';C.style.top=my+'px'});
+(function lp(){fx+=(mx-fx)*.12;fy+=(my-fy)*.12;C2.style.left=fx+'px';C2.style.top=fy+'px';requestAnimationFrame(lp)})();
+document.querySelectorAll('a,button,.pc,.pj,.cb,.fps').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{C.style.width='22px';C.style.height='22px';C.style.background='var(--teal)';C2.style.opacity='.55';C2.style.transform='translate(-50%,-50%) scale(1.4)'});
+  el.addEventListener('mouseleave',()=>{C.style.width='12px';C.style.height='12px';C.style.background='var(--orange)';C2.style.opacity='.3';C2.style.transform='translate(-50%,-50%) scale(1)'});
+});
+
+/* --- Nav --- */
+const nav=document.getElementById('mainNav'),ham=document.getElementById('ham'),mob=document.getElementById('mobNav');
+let mOpen=false;
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+ham.addEventListener('click',()=>{
+  mOpen=!mOpen;mob.classList.toggle('open',mOpen);
+  const sp=ham.querySelectorAll('span');
+  sp[0].style.transform=mOpen?'rotate(45deg) translate(5px,5px)':'';
+  sp[1].style.opacity=mOpen?'0':'1';
+  sp[2].style.transform=mOpen?'rotate(-45deg) translate(5px,-5px)':'';
+});
+function cM(){mOpen=false;mob.classList.remove('open');ham.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity=''})}
+
+/* --- Scroll reveal --- */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
+document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+
+/* --- Counter --- */
+function cnt(id,end,sfx){
+  const el=document.getElementById(id);if(!el)return;
+  let n=0;const step=end/50;
+  const t=setInterval(()=>{n=Math.min(n+step,end);el.textContent=Math.floor(n)+sfx;if(n>=end)clearInterval(t)},28);
+}
+const so=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){cnt('s1',20,'+');cnt('s2',500,'+');so.disconnect()}})},{threshold:.5});
+const hs=document.querySelector('.hero-stats');if(hs)so.observe(hs);
+
+/* --- Form --- */
+function doSub(btn){
+  btn.textContent='✅ Đã Gửi! Chúng Tôi Sẽ Phản Hồi Sớm';
+  btn.style.background='linear-gradient(135deg,#22C55E,#16A34A)';
+  setTimeout(()=>{btn.textContent='🚀 Gửi Yêu Cầu Ngay';btn.style.background=''},4500);
+}
+
+</script>
+</body>
+</html>
