@@ -1,28 +1,45 @@
 <!DOCTYPE html>
-<html lang="vi">
+
+<html dir="ltr" lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MENMAX | Sơn Quốc Tế Cao Cấp</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><script>(function () {
+  try {
+    var saved = localStorage.getItem('menmax-language');
+    var candidates = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'vi'];
+    var detected = 'vi';
+    for (var i = 0; i < candidates.length; i++) {
+      var code = String(candidates[i] || '').toLowerCase();
+      if (code.indexOf('zh') === 0) { detected = 'zh'; break; }
+      if (code.indexOf('en') === 0) { detected = 'en'; break; }
+      if (code.indexOf('vi') === 0) { detected = 'vi'; break; }
+    }
+    var initial = /^(vi|en|zh)$/.test(saved || '') ? saved : detected;
+    document.documentElement.lang = initial === 'zh' ? 'zh-CN' : initial;
+    document.documentElement.dataset.lang = initial;
+  } catch (error) {
+    document.documentElement.lang = 'vi';
+    document.documentElement.dataset.lang = 'vi';
+  }
+})();</script>
+<title>MENMAX | Sơn Quốc Tế Cao Cấp</title><meta content="Sơn MENMAX — Kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam. Công nghệ Nhật Bản." name="description"/>
 <!-- Cấu hình hiển thị khi chia sẻ link (Zalo, Facebook, Messenger...) -->
-<meta property="og:title" content="MENMAX | Sơn Quốc Tế Cao Cấp">
-<meta property="og:description" content="Sơn MENMAX — Kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam. Công nghệ Nhật Bản.">
-<meta property="og:image" content="https://sonmenmax.github.io/TrangChinhThuc/anhbia.jpg">
-<meta property="og:url" content="https://sonmenmax.github.io/TrangChinhThuc/">
-<meta property="og:type" content="website">
-
+<meta content="MENMAX | Sơn Quốc Tế Cao Cấp" property="og:title"/>
+<meta content="Sơn MENMAX — Kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam. Công nghệ Nhật Bản." property="og:description"/>
+<meta content="https://sonmenmax.github.io/TrangChinhThuc/anhbia.jpg" property="og:image"/>
+<meta content="https://sonmenmax.github.io/TrangChinhThuc/" property="og:url"/>
+<meta content="website" property="og:type"/>
 <!-- Bổ sung thêm cho nền tảng Zalo -->
-<meta itemprop="name" content="MENMAX | Sơn Quốc Tế Cao Cấp">
-<meta itemprop="description" content="Sơn MENMAX — Kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam.">
-<meta itemprop="image" content="https://sonmenmax.github.io/TrangChinhThuc/anhbia.jpg">
-
+<meta content="MENMAX | Sơn Quốc Tế Cao Cấp" itemprop="name"/>
+<meta content="Sơn MENMAX — Kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam." itemprop="description"/>
+<meta content="https://sonmenmax.github.io/TrangChinhThuc/anhbia.jpg" itemprop="image"/>
 <!-- Tối ưu hiển thị ảnh lớn trên các nền tảng khác (như Twitter/X, Telegram) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MENMAX | Sơn Quốc Tế Cao Cấp">
-<meta name="twitter:description" content="Sơn MENMAX — Kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam.">
-<meta name="twitter:image" content="https://sonmenmax.github.io/TrangChinhThuc/anhbia.jpg">
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="MENMAX | Sơn Quốc Tế Cao Cấp" name="twitter:title"/>
+<meta content="Sơn MENMAX — Kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam." name="twitter:description"/>
+<meta content="https://sonmenmax.github.io/TrangChinhThuc/anhbia.jpg" name="twitter:image"/>
 <!-- Đã thay đổi sang bộ font Outfit và Plus Jakarta Sans -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&amp;family=Outfit:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
 <style>
 /* ===== BASE ===== */
 *{margin:0;padding:0;box-sizing:border-box}
@@ -388,328 +405,447 @@ footer{background:var(--ink);padding:clamp(50px,7vw,86px) 0 clamp(26px,4vw,42px)
   .ci{min-width:100%;border-right:none;border-bottom:1px solid rgba(255,255,255,.05)}
   .fb{flex-direction:column;text-align:center}
 }
+
+
+/* ===== MULTILINGUAL LANGUAGE SWITCHER ===== */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+body{font-family:'Plus Jakarta Sans','Noto Sans SC',sans-serif;transition:opacity .16s ease}
+.h2,.hero-title,.logo,.pname,.pjt,.pc-ti,.cf-ti,.fl-logo{font-family:'Outfit','Noto Sans SC',sans-serif}
+html[lang="zh-CN"] body{font-family:'Noto Sans SC','Plus Jakarta Sans',sans-serif}
+html[lang="zh-CN"] .h2,html[lang="zh-CN"] .hero-title,html[lang="zh-CN"] .logo,html[lang="zh-CN"] .pname,html[lang="zh-CN"] .pjt,html[lang="zh-CN"] .pc-ti,html[lang="zh-CN"] .cf-ti,html[lang="zh-CN"] .fl-logo{font-family:'Noto Sans SC','Outfit',sans-serif;letter-spacing:0}
+body.lang-switching{opacity:.86}
+.nav-actions{display:flex;align-items:center;gap:12px;position:relative;z-index:510}
+.lang-switcher{position:relative}
+.lang-toggle{height:42px;min-width:94px;padding:0 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.96);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Plus Jakarta Sans','Noto Sans SC',sans-serif;font-size:.82rem;font-weight:800;letter-spacing:.8px;box-shadow:0 7px 24px rgba(0,0,0,.14);cursor:none;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
+.lang-toggle:hover,.lang-toggle:focus-visible{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.2);outline:none}
+.lang-globe{font-size:1.05rem;line-height:1}
+.lang-chevron{font-size:.72rem;transition:transform .25s ease}
+.lang-switcher.open .lang-chevron{transform:rotate(180deg)}
+nav.scrolled .lang-toggle{background:var(--orange);color:#fff;border-color:var(--orange);box-shadow:0 6px 22px rgba(255,92,26,.28)}
+.lang-menu{position:absolute;top:calc(100% + 10px);right:0;width:190px;padding:8px;background:rgba(255,255,255,.98);border:1px solid rgba(15,15,26,.08);border-radius:16px;box-shadow:0 18px 50px rgba(15,15,26,.16);backdrop-filter:blur(18px);opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top right;transition:opacity .2s ease,visibility .2s ease,transform .2s ease}
+.lang-switcher.open .lang-menu{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.lang-option{width:100%;border:0;background:transparent;color:var(--ink);border-radius:11px;padding:11px 12px;display:flex;align-items:center;gap:10px;text-align:left;font-family:'Plus Jakarta Sans','Noto Sans SC',sans-serif;font-size:.9rem;font-weight:650;cursor:none;transition:background .18s ease,color .18s ease,transform .18s ease}
+.lang-option:hover,.lang-option:focus-visible{background:var(--orange-pale);color:var(--orange);outline:none;transform:translateX(2px)}
+.lang-option[aria-selected="true"]{background:var(--orange-pale);color:var(--orange)}
+.lang-option[aria-selected="true"]::after{content:'✓';margin-left:auto;font-weight:800}
+@media(max-width:768px){
+  .nav-actions{gap:8px}
+  .lang-toggle{height:40px;min-width:78px;padding:0 11px;cursor:pointer}
+  .lang-menu{width:174px}
+  .lang-option{cursor:pointer}
+}
+@media(max-width:380px){
+  nav{padding-left:14px;padding-right:14px}
+  .lang-toggle{min-width:68px;padding:0 9px;gap:6px}
+  .lang-globe{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  body,.lang-toggle,.lang-menu,.lang-option,.lang-chevron{transition:none!important}
+}
 </style>
 </head>
-<body>
-
+<body><div aria-atomic="true" aria-live="polite" class="sr-only" id="langStatus"></div>
 <div id="cur"></div><div id="cur2"></div>
-
 <!-- Float palette -->
 <div class="fpal">
-  <div class="fps" style="background:#FF5C1A"></div>
-  <div class="fps" style="background:#FF3F6C"></div>
-  <div class="fps" style="background:#FFD60A"></div>
-  <div class="fps" style="background:#22C55E"></div>
-  <div class="fps" style="background:#00C2A8"></div>
-  <div class="fps" style="background:#3B82F6"></div>
-  <div class="fps" style="background:#7B5EFF"></div>
+<div class="fps" style="background:#FF5C1A"></div>
+<div class="fps" style="background:#FF3F6C"></div>
+<div class="fps" style="background:#FFD60A"></div>
+<div class="fps" style="background:#22C55E"></div>
+<div class="fps" style="background:#00C2A8"></div>
+<div class="fps" style="background:#3B82F6"></div>
+<div class="fps" style="background:#7B5EFF"></div>
 </div>
-
 <!-- NAV -->
 <nav id="mainNav">
-  <a class="logo" href="#">MEN<span>MAX</span></a>
-  <ul class="nav-menu">
-    <li><a href="#gioi-thieu">Giới Thiệu</a></li>
-    <li><a href="#san-pham">Sản Phẩm</a></li>
-    <li><a href="#cong-trinh">Công Trình</a></li>
-    <li><a href="#quy-trinh">Quy Trình</a></li>
-    <li><a href="#lien-he" class="nav-cta">📞 Liên Hệ</a></li>
-  </ul>
-  <button class="ham" id="ham" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="mob-nav" id="mobNav">
-  <a href="#gioi-thieu" onclick="cM()">Giới Thiệu</a>
-  <a href="#san-pham" onclick="cM()">Sản Phẩm</a>
-  <a href="#cong-trinh" onclick="cM()">Công Trình</a>
-  <a href="#quy-trinh" onclick="cM()">Quy Trình</a>
-  <a href="#lien-he" onclick="cM()">Liên Hệ</a>
-  <a href="tel:0855327713" class="btn btn-o mob-cta" onclick="cM()">📞Nhấn vào đây</a>
-</div>
+<a class="logo" href="#">MEN<span>MAX</span></a>
+<ul class="nav-menu">
+<li><a data-i18n="nav_about" href="#gioi-thieu">Giới Thiệu</a></li>
+<li><a data-i18n="nav_products" href="#san-pham">Sản Phẩm</a></li>
+<li><a data-i18n="nav_projects" href="#cong-trinh">Công Trình</a></li>
+<li><a data-i18n="nav_process" href="#quy-trinh">Quy Trình</a></li>
+<li><a class="nav-cta" data-i18n="nav_contact" href="#lien-he">📞 Liên Hệ</a></li>
+</ul>
 
+<div class="nav-actions"><div class="lang-switcher" id="langSwitcher"><button aria-expanded="false" aria-haspopup="listbox" class="lang-toggle" data-i18n-aria="language_label" id="langToggle" type="button"><span aria-hidden="true" class="lang-globe">🌐</span><span id="langCurrent">VI</span><span aria-hidden="true" class="lang-chevron">▾</span></button><div class="lang-menu" id="langMenu" role="listbox"><button aria-selected="false" class="lang-option" data-lang="vi" role="option" type="button"><span aria-hidden="true">🇻🇳</span><span>Tiếng Việt</span></button><button aria-selected="false" class="lang-option" data-lang="en" role="option" type="button"><span aria-hidden="true">🇬🇧</span><span>English</span></button><button aria-selected="false" class="lang-option" data-lang="zh" role="option" type="button"><span aria-hidden="true">🇨🇳</span><span>中文</span></button></div></div><button aria-label="Menu" class="ham" id="ham">
+<span></span><span></span><span></span>
+</button></div></nav>
+<div class="mob-nav" id="mobNav">
+<a data-i18n="nav_about" href="#gioi-thieu" onclick="cM()">Giới Thiệu</a>
+<a data-i18n="nav_products" href="#san-pham" onclick="cM()">Sản Phẩm</a>
+<a data-i18n="nav_projects" href="#cong-trinh" onclick="cM()">Công Trình</a>
+<a data-i18n="nav_process" href="#quy-trinh" onclick="cM()">Quy Trình</a>
+<a data-i18n="nav_contact" href="#lien-he" onclick="cM()">Liên Hệ</a>
+<a class="btn btn-o mob-cta" data-i18n="mobile_call" href="tel:0855327713" onclick="cM()">📞Nhấn vào đây</a>
+</div>
 <!-- HERO VIDEO -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="">
-    <source src="video.mov" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-
-  <div class="hero-inner">
-    <div class="hero-badge">
-      <div class="bdot"></div>
+<video autoplay="" class="hero-video" loop="" muted="" playsinline="" poster="">
+<source src="video.mov" type="video/mp4"/>
+</video>
+<div class="hero-overlay"></div>
+<div class="hero-inner">
+<div class="hero-badge" data-i18n="hero_badge">
+<div class="bdot"></div>
       Từ 2010 · Công Nghệ Nhật Bản
     </div>
-    <h1 class="hero-title">
+<h1 class="hero-title" data-i18n-html="hero_title">
       Màu Sắc <span class="hl">Bất Tận</span>
-    </h1>
-    <p class="hero-sub">Sơn MENMAX — kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam.</p>
-    <div class="hero-acts">
-      <a class="btn btn-o" href="#san-pham">🎨 Khám Phá Sản Phẩm <span class="arr">→</span></a>
-      <a class="btn btn-g" href="#cong-trinh" style="color:#fff;border-color:rgba(255,255,255,.3)">Xem Công Trình</a>
-    </div>
-  </div>
-
-  <div class="scroll-ind">
-    <div class="scroll-line"></div>
+</h1>
+<p class="hero-sub" data-i18n="hero_sub">Sơn MENMAX — kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam.</p>
+<div class="hero-acts">
+<a class="btn btn-o" data-i18n-html="hero_products" href="#san-pham">🎨 Khám Phá Sản Phẩm <span class="arr">→</span></a>
+<a class="btn btn-g" data-i18n="hero_projects" href="#cong-trinh" style="color:#fff;border-color:rgba(255,255,255,.3)">Xem Công Trình</a>
+</div>
+</div>
+<div class="scroll-ind" data-i18n="scroll_down">
+<div class="scroll-line"></div>
     Cuộn xuống
   </div>
-
-  <!-- Stats bar pinned at bottom -->
-  <div class="hero-stats">
-    <div class="hstat-inner">
-      <div class="hstat"><span class="hstat-n" id="s1">0+</span><span class="hstat-l">Năm Kinh Nghiệm</span></div>
-      <div class="hstat"><span class="hstat-n" id="s2">0+</span><span class="hstat-l">Công Trình</span></div>
-      <div class="hstat"><span class="hstat-n">ISO</span><span class="hstat-l">9001:2015</span></div>
-      <div class="hstat"><span class="hstat-n">100%</span><span class="hstat-l">Chất Lượng</span></div>
-    </div>
-  </div>
+<!-- Stats bar pinned at bottom -->
+<div class="hero-stats">
+<div class="hstat-inner">
+<div class="hstat"><span class="hstat-n" id="s1">0+</span><span class="hstat-l" data-i18n="stats_experience">Năm Kinh Nghiệm</span></div>
+<div class="hstat"><span class="hstat-n" id="s2">0+</span><span class="hstat-l" data-i18n="stats_projects">Công Trình</span></div>
+<div class="hstat"><span class="hstat-n">ISO</span><span class="hstat-l" data-i18n="stats_iso">9001:2015</span></div>
+<div class="hstat"><span class="hstat-n">100%</span><span class="hstat-l" data-i18n="stats_quality">Chất Lượng</span></div>
+</div>
+</div>
 </section>
-
 <!-- STRIPE -->
 <div class="stripe-bar">
-  <div class="sb s1"></div><div class="sb s2"></div><div class="sb s3"></div>
-  <div class="sb s4"></div><div class="sb s5"></div><div class="sb s6"></div>
-  <div class="sb s7"></div><div class="sb s8"></div><div class="sb s9"></div><div class="sb s10"></div>
+<div class="sb s1"></div><div class="sb s2"></div><div class="sb s3"></div>
+<div class="sb s4"></div><div class="sb s5"></div><div class="sb s6"></div>
+<div class="sb s7"></div><div class="sb s8"></div><div class="sb s9"></div><div class="sb s10"></div>
 </div>
-
 <!-- MARQUEE -->
 <div class="mq">
-  <div class="mq-track">
-    <span class="mq-item"><span class="mdot md-o"></span>Sơn Nội Thất Cao Cấp</span>
-    <span class="mq-item"><span class="mdot md-t"></span>Sơn Ngoại Thất</span>
-    <span class="mq-item"><span class="mdot md-y"></span>Sơn Chống Thấm Đa Năng</span>
-    <span class="mq-item"><span class="mdot md-p"></span>Bột Bả Tường</span>
-    <span class="mq-item"><span class="mdot md-o"></span>Sơn Lót Chống Kiềm</span>
-    <span class="mq-item"><span class="mdot md-t"></span>Sơn Trang Trí</span>
-    <span class="mq-item"><span class="mdot md-y"></span>Thi Công Chuyên Nghiệp</span>
-    <span class="mq-item"><span class="mdot md-p"></span>Công Nghệ Nhật Bản</span>
-    <span class="mq-item"><span class="mdot md-o"></span>Sơn Nội Thất Cao Cấp</span>
-    <span class="mq-item"><span class="mdot md-t"></span>Sơn Ngoại Thất</span>
-    <span class="mq-item"><span class="mdot md-y"></span>Sơn Chống Thấm Đa Năng</span>
-    <span class="mq-item"><span class="mdot md-p"></span>Bột Bả Tường</span>
-    <span class="mq-item"><span class="mdot md-o"></span>Sơn Lót Chống Kiềm</span>
-    <span class="mq-item"><span class="mdot md-t"></span>Sơn Trang Trí</span>
-    <span class="mq-item"><span class="mdot md-y"></span>Thi Công Chuyên Nghiệp</span>
-    <span class="mq-item"><span class="mdot md-p"></span>Công Nghệ Nhật Bản</span>
-  </div>
+<div class="mq-track">
+<span class="mq-item" data-i18n-html="mq_interior"><span class="mdot md-o"></span>Sơn Nội Thất Cao Cấp</span>
+<span class="mq-item" data-i18n-html="mq_exterior"><span class="mdot md-t"></span>Sơn Ngoại Thất</span>
+<span class="mq-item" data-i18n-html="mq_waterproof"><span class="mdot md-y"></span>Sơn Chống Thấm Đa Năng</span>
+<span class="mq-item" data-i18n-html="mq_putty"><span class="mdot md-p"></span>Bột Bả Tường</span>
+<span class="mq-item" data-i18n-html="mq_primer"><span class="mdot md-o"></span>Sơn Lót Chống Kiềm</span>
+<span class="mq-item" data-i18n-html="mq_decorative"><span class="mdot md-t"></span>Sơn Trang Trí</span>
+<span class="mq-item" data-i18n-html="mq_application"><span class="mdot md-y"></span>Thi Công Chuyên Nghiệp</span>
+<span class="mq-item" data-i18n-html="mq_japanese"><span class="mdot md-p"></span>Công Nghệ Nhật Bản</span>
+<span class="mq-item" data-i18n-html="mq_interior"><span class="mdot md-o"></span>Sơn Nội Thất Cao Cấp</span>
+<span class="mq-item" data-i18n-html="mq_exterior"><span class="mdot md-t"></span>Sơn Ngoại Thất</span>
+<span class="mq-item" data-i18n-html="mq_waterproof"><span class="mdot md-y"></span>Sơn Chống Thấm Đa Năng</span>
+<span class="mq-item" data-i18n-html="mq_putty"><span class="mdot md-p"></span>Bột Bả Tường</span>
+<span class="mq-item" data-i18n-html="mq_primer"><span class="mdot md-o"></span>Sơn Lót Chống Kiềm</span>
+<span class="mq-item" data-i18n-html="mq_decorative"><span class="mdot md-t"></span>Sơn Trang Trí</span>
+<span class="mq-item" data-i18n-html="mq_application"><span class="mdot md-y"></span>Thi Công Chuyên Nghiệp</span>
+<span class="mq-item" data-i18n-html="mq_japanese"><span class="mdot md-p"></span>Công Nghệ Nhật Bản</span>
 </div>
-
+</div>
 <!-- ABOUT -->
 <section class="about sp" id="gioi-thieu">
-  <div class="container">
-    <div class="about-grid">
-      <div>
-        <div class="tag rev">🏭 Về Chúng Tôi</div>
-        <h2 class="h2 rev rd1">Hành Trình <em>Vẽ Nên</em> Việt Nam</h2>
-        <p class="body-t rev rd2" style="margin-top:16px">Công Ty TNHH Sản Xuất Sơn Quốc Tế thành lập 2015, thương hiệu Sơn MENMAX từ2010 với công nghệ số 1 Nhật Bản. Không ngừng đổi mới qua hàng trăm công trình khắp toàn quốc.</p>
-        <p class="body-t rev rd3" style="margin-top:12px">Sản phẩm nhiệt đới hóa hoàn toàn, tối ưu cho khí hậu Việt Nam. Được kiến trúc sư, kỹ sư và nhà thầu hàng đầu tin dùng.</p>
-        <div class="feat-grid rev rd4">
-          <div class="feat"><div class="fic fio">🏭</div><div><div class="fn">Sản Xuất Trực Tiếp</div><div class="fs">KCN Thọ Xương,P Bắc Giang , Bắc Ninh</div></div></div>
-          <div class="feat"><div class="fic fit">🇯🇵</div><div><div class="fn">Công Nghệ Nhật Bản</div><div class="fs">Số 1 thế giới về sơn</div></div></div>
-          <div class="feat"><div class="fic fiy">✅</div><div><div class="fn">ISO 9001:2015</div><div class="fs">Chứng nhận quốc tế</div></div></div>
-          <div class="feat"><div class="fic fip">🌡️</div><div><div class="fn">Nhiệt Đới Hóa</div><div class="fs">Phù hợp khí hậu VN</div></div></div>
-        </div>
-        <div style="margin-top:clamp(26px,4vw,40px)" class="rev rd4">
-          <a class="btn btn-o" href="#lien-he">Tư Vấn Miễn Phí <span class="arr">→</span></a>
-        </div>
-      </div>
-      <div class="av-wrap rev">
-        <div class="cb cb1"><div class="cb-in"><div class="cb-lbl">Sơn Nội Thất</div><div class="cb-nm">Cam Rực Rỡ</div></div></div>
-        <div class="cb cb2"><div class="cb-in"><div class="cb-lbl">Chống Thấm</div><div class="cb-nm">Xanh Ngọc</div></div></div>
-        <div class="cb cb3"><div class="cb-in"><div class="cb-lbl">Sơn Lót</div><div class="cb-nm">Vàng Rạng Ngời</div></div></div>
-        <div class="cb cb4"><div class="cb-in"><div class="cb-lbl">Ngoại Thất</div><div class="cb-nm">Tím Hoàng Gia</div></div></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="about-grid">
+<div>
+<div class="tag rev" data-i18n="about_tag">🏭 Về Chúng Tôi</div>
+<h2 class="h2 rev rd1" data-i18n-html="about_title">Hành Trình <em>Vẽ Nên</em> Việt Nam</h2>
+<p class="body-t rev rd2" data-i18n="about_p1" style="margin-top:16px">Công Ty TNHH Sản Xuất Sơn Quốc Tế thành lập 2015, thương hiệu Sơn MENMAX từ2010 với công nghệ số 1 Nhật Bản. Không ngừng đổi mới qua hàng trăm công trình khắp toàn quốc.</p>
+<p class="body-t rev rd3" data-i18n="about_p2" style="margin-top:12px">Sản phẩm nhiệt đới hóa hoàn toàn, tối ưu cho khí hậu Việt Nam. Được kiến trúc sư, kỹ sư và nhà thầu hàng đầu tin dùng.</p>
+<div class="feat-grid rev rd4">
+<div class="feat"><div class="fic fio">🏭</div><div><div class="fn" data-i18n="feat_direct">Sản Xuất Trực Tiếp</div><div class="fs" data-i18n="feat_direct_sub">KCN Thọ Xương,P Bắc Giang , Bắc Ninh</div></div></div>
+<div class="feat"><div class="fic fit">🇯🇵</div><div><div class="fn" data-i18n="feat_japan">Công Nghệ Nhật Bản</div><div class="fs" data-i18n="feat_japan_sub">Số 1 thế giới về sơn</div></div></div>
+<div class="feat"><div class="fic fiy">✅</div><div><div class="fn" data-i18n="feat_iso">ISO 9001:2015</div><div class="fs" data-i18n="feat_iso_sub">Chứng nhận quốc tế</div></div></div>
+<div class="feat"><div class="fic fip">🌡️</div><div><div class="fn" data-i18n="feat_tropical">Nhiệt Đới Hóa</div><div class="fs" data-i18n="feat_tropical_sub">Phù hợp khí hậu VN</div></div></div>
+</div>
+<div class="rev rd4" style="margin-top:clamp(26px,4vw,40px)">
+<a class="btn btn-o" data-i18n-html="free_consult" href="#lien-he">Tư Vấn Miễn Phí <span class="arr">→</span></a>
+</div>
+</div>
+<div class="av-wrap rev">
+<div class="cb cb1"><div class="cb-in"><div class="cb-lbl" data-i18n="color_interior">Sơn Nội Thất</div><div class="cb-nm" data-i18n="color_orange">Cam Rực Rỡ</div></div></div>
+<div class="cb cb2"><div class="cb-in"><div class="cb-lbl" data-i18n="color_waterproof">Chống Thấm</div><div class="cb-nm" data-i18n="color_teal">Xanh Ngọc</div></div></div>
+<div class="cb cb3"><div class="cb-in"><div class="cb-lbl" data-i18n="color_primer">Sơn Lót</div><div class="cb-nm" data-i18n="color_yellow">Vàng Rạng Ngời</div></div></div>
+<div class="cb cb4"><div class="cb-in"><div class="cb-lbl" data-i18n="color_exterior">Ngoại Thất</div><div class="cb-nm" data-i18n="color_purple">Tím Hoàng Gia</div></div></div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- PRODUCTS -->
 <section class="products sp" id="san-pham">
-  <div class="container">
-    <div class="ph">
-      <div>
-        <div class="tag t rev">🎨 Sản Phẩm</div>
-        <h2 class="h2 rev rd1">Dòng Sản Phẩm <em>Cao Cấp</em></h2>
-      </div>
-      <a class="al rev" href="#lien-he">Báo giá ngay →</a>
-    </div>
-    <div class="pg">
-      <div class="pc p1 rev"><div class="pico pio">🏠</div><div class="pnum">01</div><div class="pname">Sơn Nội Thất Cao Cấp</div><div class="pdesc">Độ bền màu vượt trội, không độc hại, an toàn gia đình. Phủ mịn đều, chống ố vàng lâu dài.</div><span class="pbg pbo">Bán Chạy #1</span></div>
-      <div class="pc p2 rev rd1"><div class="pico pit">🌧️</div><div class="pnum">02</div><div class="pname">Sơn Ngoại Thất Siêu Bền</div><div class="pdesc">Chống UV, mưa axit, nhiệt độ cao. Giữ màu tươi sáng đến 10 năm trong mọi điều kiện.</div><span class="pbg pbt">Bền 10 Năm</span></div>
-      <div class="pc p3 rev rd2"><div class="pico piy">💧</div><div class="pnum">03</div><div class="pname">Sơn Chống Thấm Đa Năng</div><div class="pdesc">Chống thấm toàn diện mái, tường, sàn. Co giãn cao, bịt kín vết nứt vi mô hiệu quả.</div><span class="pbg pby">Đa Năng</span></div>
-      <div class="pc p4 rev rd1"><div class="pico pip">🛡️</div><div class="pnum">04</div><div class="pname">Sơn Lót Chống Kiềm</div><div class="pdesc">Lớp nền hoàn hảo, ngăn kiềm tấn công, tăng độ bám dính tối đa cho lớp sơn phủ.</div><span class="pbg pbp">Nội + Ngoại</span></div>
-      <div class="pc p5 rev rd2"><div class="pico pic">✨</div><div class="pnum">05</div><div class="pname">Sơn Bóng Siêu Cao Cấp</div><div class="pdesc">Độ bóng gương, phản chiếu ánh sáng đẹp. Kháng bẩn, phù hợp không gian sang trọng.</div><span class="pbg pbc">Siêu Bóng</span></div>
-      <div class="pc p6 rev rd3"><div class="pico pig">🪣</div><div class="pnum">06</div><div class="pname">Bột Bả Tường Cao Cấp</div><div class="pdesc">Nền tảng hoàn hảo, siêu mịn, chống nứt. Dễ thi công cả nội lẫn ngoại thất.</div><span class="pbg pbgr">Nội + Ngoại</span></div>
-    </div>
-  </div>
+<div class="container">
+<div class="ph">
+<div>
+<div class="tag t rev" data-i18n="products_tag">🎨 Sản Phẩm</div>
+<h2 class="h2 rev rd1" data-i18n-html="products_title">Dòng Sản Phẩm <em>Cao Cấp</em></h2>
+</div>
+<a class="al rev" data-i18n="quote_now" href="#lien-he">Báo giá ngay →</a>
+</div>
+<div class="pg">
+<div class="pc p1 rev"><div class="pico pio">🏠</div><div class="pnum">01</div><div class="pname" data-i18n="prod1_name">Sơn Nội Thất Cao Cấp</div><div class="pdesc" data-i18n="prod1_desc">Độ bền màu vượt trội, không độc hại, an toàn gia đình. Phủ mịn đều, chống ố vàng lâu dài.</div><span class="pbg pbo" data-i18n="prod1_badge">Bán Chạy #1</span></div>
+<div class="pc p2 rev rd1"><div class="pico pit">🌧️</div><div class="pnum">02</div><div class="pname" data-i18n="prod2_name">Sơn Ngoại Thất Siêu Bền</div><div class="pdesc" data-i18n="prod2_desc">Chống UV, mưa axit, nhiệt độ cao. Giữ màu tươi sáng đến 10 năm trong mọi điều kiện.</div><span class="pbg pbt" data-i18n="prod2_badge">Bền 10 Năm</span></div>
+<div class="pc p3 rev rd2"><div class="pico piy">💧</div><div class="pnum">03</div><div class="pname" data-i18n="prod3_name">Sơn Chống Thấm Đa Năng</div><div class="pdesc" data-i18n="prod3_desc">Chống thấm toàn diện mái, tường, sàn. Co giãn cao, bịt kín vết nứt vi mô hiệu quả.</div><span class="pbg pby" data-i18n="prod3_badge">Đa Năng</span></div>
+<div class="pc p4 rev rd1"><div class="pico pip">🛡️</div><div class="pnum">04</div><div class="pname" data-i18n="prod4_name">Sơn Lót Chống Kiềm</div><div class="pdesc" data-i18n="prod4_desc">Lớp nền hoàn hảo, ngăn kiềm tấn công, tăng độ bám dính tối đa cho lớp sơn phủ.</div><span class="pbg pbp" data-i18n="prod4_badge">Nội + Ngoại</span></div>
+<div class="pc p5 rev rd2"><div class="pico pic">✨</div><div class="pnum">05</div><div class="pname" data-i18n="prod5_name">Sơn Bóng Siêu Cao Cấp</div><div class="pdesc" data-i18n="prod5_desc">Độ bóng gương, phản chiếu ánh sáng đẹp. Kháng bẩn, phù hợp không gian sang trọng.</div><span class="pbg pbc" data-i18n="prod5_badge">Siêu Bóng</span></div>
+<div class="pc p6 rev rd3"><div class="pico pig">🪣</div><div class="pnum">06</div><div class="pname" data-i18n="prod6_name">Bột Bả Tường Cao Cấp</div><div class="pdesc" data-i18n="prod6_desc">Nền tảng hoàn hảo, siêu mịn, chống nứt. Dễ thi công cả nội lẫn ngoại thất.</div><span class="pbg pbgr" data-i18n="prod6_badge">Nội + Ngoại</span></div>
+</div>
+</div>
 </section>
-
 <!-- PROJECTS -->
 <section class="projects sp" id="cong-trinh">
-  <div class="container">
-    <div class="pjh rev">
-      <div class="tag">🏗️ Công Trình Tiêu Biểu</div>
-      <h2 class="h2" style="color:#fff;margin-top:12px">Dấu Ấn Trên <em>Từng Công Trình</em></h2>
-    </div>
-    <div class="pj-grid">
-      
-      <!-- Dự án 1: Goertek (Đã sửa link ảnh thành nhà máy/công xưởng hiện đại) -->
-      <div class="pj rev">
-        <div class="pjbg bg1" style="background-image: url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-        <div class="pjov"></div>
-        <div class="pji">
-          <span class="pjb">KCN · 2024</span>
-          <div class="pjt">Nhà Máy Goertek Vina</div>
-          <div class="pjm">Sơn nền công nghiệp & ngoại thất · Bắc Ninh</div>
-        </div>
-      </div>
-
-      <!-- Dự án 2: Ecopark Hưng Yên (Giữ nguyên) -->
-      <div class="pj rev rd1">
-        <div class="pjbg bg2" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-        <div class="pjov"></div>
-        <div class="pji">
-          <span class="pjb">Đô Thị · 2023</span>
-          <div class="pjt">Khu Biệt Thự Ecopark</div>
-          <div class="pjm">Sơn ngoại thất cao cấp · Hưng Yên</div>
-        </div>
-      </div>
-
-      <!-- Dự án 3: Vinhomes Central (Giữ nguyên) -->
-      <div class="pj rev rd2">
-        <div class="pjbg bg3" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-        <div class="pjov"></div>
-        <div class="pji">
-          <span class="pjb">Nhà Ở · 2023</span>
-          <div class="pjt">Căn Hộ Vinhomes Central</div>
-          <div class="pjm">Sơn nội thất toàn diện · TP.HCM</div>
-        </div>
-      </div>
-
-      <!-- Dự án 4: Đã thay thế Mường Thanh thành Vinhomes Ocean Park 2 (Hưng Yên) -->
-      <div class="pj rev rd1">
-        <div class="pjbg bg4" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-        <div class="pjov"></div>
-        <div class="pji">
-          <span class="pjb">Đô Thị · 2024</span>
-          <div class="pjt">Vinhomes Ocean Park 2</div>
-          <div class="pjm">Sơn ngoại thất liền kề · Hưng Yên</div>
-        </div>
-      </div>
-
-      <!-- Dự án 5: Biệt Thự Hiện Đại (Giữ nguyên) -->
-      <div class="pj rev rd2">
-        <div class="pjbg bg5" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
-        <div class="pjov"></div>
-        <div class="pji">
-          <span class="pjb">Dân Dụng · 2024</span>
-          <div class="pjt">Biệt Thự Hiện Đại</div>
-          <div class="pjm">Sơn trang trí & bóng gương</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<div class="container">
+<div class="pjh rev">
+<div class="tag" data-i18n="projects_tag">🏗️ Công Trình Tiêu Biểu</div>
+<h2 class="h2" data-i18n-html="projects_title" style="color:#fff;margin-top:12px">Dấu Ấn Trên <em>Từng Công Trình</em></h2>
+</div>
+<div class="pj-grid">
+<!-- Dự án 1: Goertek (Đã sửa link ảnh thành nhà máy/công xưởng hiện đại) -->
+<div class="pj rev">
+<div class="pjbg bg1" style="background-image: url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&amp;w=1000&amp;auto=format&amp;fit=crop'); background-size: cover; background-position: center;"></div>
+<div class="pjov"></div>
+<div class="pji">
+<span class="pjb" data-i18n="project1_badge">KCN · 2024</span>
+<div class="pjt" data-i18n="project1_name">Nhà Máy Goertek Vina</div>
+<div class="pjm" data-i18n="project1_desc">Sơn nền công nghiệp &amp; ngoại thất · Bắc Ninh</div>
+</div>
+</div>
+<!-- Dự án 2: Ecopark Hưng Yên (Giữ nguyên) -->
+<div class="pj rev rd1">
+<div class="pjbg bg2" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&amp;w=1000&amp;auto=format&amp;fit=crop'); background-size: cover; background-position: center;"></div>
+<div class="pjov"></div>
+<div class="pji">
+<span class="pjb" data-i18n="project2_badge">Đô Thị · 2023</span>
+<div class="pjt" data-i18n="project2_name">Khu Biệt Thự Ecopark</div>
+<div class="pjm" data-i18n="project2_desc">Sơn ngoại thất cao cấp · Hưng Yên</div>
+</div>
+</div>
+<!-- Dự án 3: Vinhomes Central (Giữ nguyên) -->
+<div class="pj rev rd2">
+<div class="pjbg bg3" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&amp;w=1000&amp;auto=format&amp;fit=crop'); background-size: cover; background-position: center;"></div>
+<div class="pjov"></div>
+<div class="pji">
+<span class="pjb" data-i18n="project3_badge">Nhà Ở · 2023</span>
+<div class="pjt" data-i18n="project3_name">Căn Hộ Vinhomes Central</div>
+<div class="pjm" data-i18n="project3_desc">Sơn nội thất toàn diện · TP.HCM</div>
+</div>
+</div>
+<!-- Dự án 4: Đã thay thế Mường Thanh thành Vinhomes Ocean Park 2 (Hưng Yên) -->
+<div class="pj rev rd1">
+<div class="pjbg bg4" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&amp;w=1000&amp;auto=format&amp;fit=crop'); background-size: cover; background-position: center;"></div>
+<div class="pjov"></div>
+<div class="pji">
+<span class="pjb" data-i18n="project4_badge">Đô Thị · 2024</span>
+<div class="pjt" data-i18n="project4_name">Vinhomes Ocean Park 2</div>
+<div class="pjm" data-i18n="project4_desc">Sơn ngoại thất liền kề · Hưng Yên</div>
+</div>
+</div>
+<!-- Dự án 5: Biệt Thự Hiện Đại (Giữ nguyên) -->
+<div class="pj rev rd2">
+<div class="pjbg bg5" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&amp;w=1000&amp;auto=format&amp;fit=crop'); background-size: cover; background-position: center;"></div>
+<div class="pjov"></div>
+<div class="pji">
+<span class="pjb" data-i18n="project5_badge">Dân Dụng · 2024</span>
+<div class="pjt" data-i18n="project5_name">Biệt Thự Hiện Đại</div>
+<div class="pjm" data-i18n="project5_desc">Sơn trang trí &amp; bóng gương</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- PROCESS -->
 <section class="process sp" id="quy-trinh">
-  <div class="container">
-    <div style="text-align:center">
-      <div class="tag p rev" style="margin:0 auto clamp(12px,2vw,16px)">🔄 Quy Trình</div>
-      <h2 class="h2 rev rd1" style="text-align:center">Từ Tư Vấn Đến <span class="teal">Hoàn Thiện</span></h2>
-    </div>
-    <div class="proc-grid">
-      <div class="pc-card rev"><div class="pc-num pn1">01</div><div class="pc-ico">📋</div><div class="pc-ti">Khảo Sát & Tư Vấn</div><div class="pc-de">Kỹ sư đến khảo sát trực tiếp, phân tích và tư vấn giải pháp tối ưu.</div></div>
-      <div class="pc-card rev rd1"><div class="pc-num pn2">02</div><div class="pc-ico">🎨</div><div class="pc-ti">Lên Màu & Báo Giá</div><div class="pc-de">Chọn từ hơn 10.000 màu sắc. Báo giá minh bạch trong 24 giờ.</div></div>
-      <div class="pc-card rev rd2"><div class="pc-num pn3">03</div><div class="pc-ico">🏗️</div><div class="pc-ti">Thi Công Chuyên Nghiệp</div><div class="pc-de">Thợ đào tạo bài bản, quy trình ISO, đúng tiến độ cam kết.</div></div>
-      <div class="pc-card rev rd3"><div class="pc-num pn4">04</div><div class="pc-ico">🤝</div><div class="pc-ti">Bàn Giao & Bảo Hành</div><div class="pc-de">Nghiệm thu kỹ lưỡng, bàn giao 100% chất lượng, bảo hành 5 năm.</div></div>
-    </div>
-  </div>
+<div class="container">
+<div style="text-align:center">
+<div class="tag p rev" data-i18n="process_tag" style="margin:0 auto clamp(12px,2vw,16px)">🔄 Quy Trình</div>
+<h2 class="h2 rev rd1" data-i18n-html="process_title" style="text-align:center">Từ Tư Vấn Đến <span class="teal">Hoàn Thiện</span></h2>
+</div>
+<div class="proc-grid">
+<div class="pc-card rev"><div class="pc-num pn1">01</div><div class="pc-ico">📋</div><div class="pc-ti" data-i18n="step1_name">Khảo Sát &amp; Tư Vấn</div><div class="pc-de" data-i18n="step1_desc">Kỹ sư đến khảo sát trực tiếp, phân tích và tư vấn giải pháp tối ưu.</div></div>
+<div class="pc-card rev rd1"><div class="pc-num pn2">02</div><div class="pc-ico">🎨</div><div class="pc-ti" data-i18n="step2_name">Lên Màu &amp; Báo Giá</div><div class="pc-de" data-i18n="step2_desc">Chọn từ hơn 10.000 màu sắc. Báo giá minh bạch trong 24 giờ.</div></div>
+<div class="pc-card rev rd2"><div class="pc-num pn3">03</div><div class="pc-ico">🏗️</div><div class="pc-ti" data-i18n="step3_name">Thi Công Chuyên Nghiệp</div><div class="pc-de" data-i18n="step3_desc">Thợ đào tạo bài bản, quy trình ISO, đúng tiến độ cam kết.</div></div>
+<div class="pc-card rev rd3"><div class="pc-num pn4">04</div><div class="pc-ico">🤝</div><div class="pc-ti" data-i18n="step4_name">Bàn Giao &amp; Bảo Hành</div><div class="pc-de" data-i18n="step4_desc">Nghiệm thu kỹ lưỡng, bàn giao 100% chất lượng, bảo hành 5 năm.</div></div>
+</div>
+</div>
 </section>
-
 <!-- TESTIMONIALS -->
 <section class="testi sp">
-  <div class="container">
-    <div style="text-align:center">
-      <div class="tag rev" style="margin:0 auto clamp(12px,2vw,16px)">💬 Khách Hàng Nói Gì</div>
-      <h2 class="h2 rev rd1" style="text-align:center">Niềm Tin Từ <em>Hàng Nghìn</em> Công Trình</h2>
-    </div>
-    <div class="tg">
-      <div class="tc t1 rev"><div class="tst">★★★★★</div><div class="ttx">"Sơn MENMAX bám dính và bền màu tuyệt vời. 3 năm rồi vẫn tươi như mới. Rất ấn tượng với chất lượng và dịch vụ!"</div><div class="tau"><div class="tav av1">N</div><div><div class="tn">Nguyễn Văn Thắng</div><div class="tr">Chủ Đầu Tư · Hà Nội</div></div></div></div>
-      <div class="tc t2 rev rd1"><div class="tst">★★★★★</div><div class="ttx">"Là kiến trúc sư khó tính, MENMAX là lựa chọn hàng đầu của tôi. Màu chuẩn xác, bề mặt mịn hoàn hảo."</div><div class="tau"><div class="tav av2">T</div><div><div class="tn">Trần Thị Hương</div><div class="tr">Kiến Trúc Sư · Studio H</div></div></div></div>
-      <div class="tc t3 rev rd2"><div class="tst">★★★★★</div><div class="ttx">"Dùng MENMAX cho 200 phòng khách sạn. Chi phí hợp lý, chất lượng cao cấp, đội thi công cực chuyên nghiệp!"</div><div class="tau"><div class="tav av3">P</div><div><div class="tn">Phạm Quốc Hùng</div><div class="tr">Giám Đốc · Emerald Hotel</div></div></div></div>
-      <div class="tc t4 rev rd3"><div class="tst">★★★★★</div><div class="ttx">"Nhà thầu luôn ưu tiên MENMAX. Chống thấm tốt, không bong tróc sau nhiều mùa mưa. Đối tác tin cậy!"</div><div class="tau"><div class="tav av4">L</div><div><div class="tn">Lê Đình Tuấn</div><div class="tr">Giám Đốc · XD Minh Phát</div></div></div></div>
-    </div>
-  </div>
+<div class="container">
+<div style="text-align:center">
+<div class="tag rev" data-i18n="testi_tag" style="margin:0 auto clamp(12px,2vw,16px)">💬 Khách Hàng Nói Gì</div>
+<h2 class="h2 rev rd1" data-i18n-html="testi_title" style="text-align:center">Niềm Tin Từ <em>Hàng Nghìn</em> Công Trình</h2>
+</div>
+<div class="tg">
+<div class="tc t1 rev"><div class="tst">★★★★★</div><div class="ttx" data-i18n="testi1_quote">"Sơn MENMAX bám dính và bền màu tuyệt vời. 3 năm rồi vẫn tươi như mới. Rất ấn tượng với chất lượng và dịch vụ!"</div><div class="tau"><div class="tav av1">N</div><div><div class="tn">Nguyễn Văn Thắng</div><div class="tr" data-i18n="testi1_role">Chủ Đầu Tư · Hà Nội</div></div></div></div>
+<div class="tc t2 rev rd1"><div class="tst">★★★★★</div><div class="ttx" data-i18n="testi2_quote">"Là kiến trúc sư khó tính, MENMAX là lựa chọn hàng đầu của tôi. Màu chuẩn xác, bề mặt mịn hoàn hảo."</div><div class="tau"><div class="tav av2">T</div><div><div class="tn">Trần Thị Hương</div><div class="tr" data-i18n="testi2_role">Kiến Trúc Sư · Studio H</div></div></div></div>
+<div class="tc t3 rev rd2"><div class="tst">★★★★★</div><div class="ttx" data-i18n="testi3_quote">"Dùng MENMAX cho 200 phòng khách sạn. Chi phí hợp lý, chất lượng cao cấp, đội thi công cực chuyên nghiệp!"</div><div class="tau"><div class="tav av3">P</div><div><div class="tn">Phạm Quốc Hùng</div><div class="tr" data-i18n="testi3_role">Giám Đốc · Emerald Hotel</div></div></div></div>
+<div class="tc t4 rev rd3"><div class="tst">★★★★★</div><div class="ttx" data-i18n="testi4_quote">"Nhà thầu luôn ưu tiên MENMAX. Chống thấm tốt, không bong tróc sau nhiều mùa mưa. Đối tác tin cậy!"</div><div class="tau"><div class="tav av4">L</div><div><div class="tn">Lê Đình Tuấn</div><div class="tr" data-i18n="testi4_role">Giám Đốc · XD Minh Phát</div></div></div></div>
+</div>
+</div>
 </section>
-
 <!-- CERTS -->
 <div class="certs">
-  <div class="container"><div class="ci-wrap">
-    <div class="ci"><div class="ci-ic">🏆</div><div class="ci-n">ISO 9001:2015</div><div class="ci-d">Quản Lý Chất Lượng</div></div>
-    <div class="ci"><div class="ci-ic">🇯🇵</div><div class="ci-n">Japanese Tech</div><div class="ci-d">Công Nghệ Số 1 Nhật Bản</div></div>
-    <div class="ci"><div class="ci-ic">🌱</div><div class="ci-n">Eco-Friendly</div><div class="ci-d">Thân Thiện Môi Trường</div></div>
-    <div class="ci"><div class="ci-ic">⚡</div><div class="ci-n">Thành Lập 2015</div><div class="ci-d">MST: 2400764878</div></div>
-    <div class="ci"><div class="ci-ic">🗺️</div><div class="ci-n">Miền Bắc</div><div class="ci-d">Thị Trường Trọng Tâm</div></div>
-  </div></div>
+<div class="container"><div class="ci-wrap">
+<div class="ci"><div class="ci-ic">🏆</div><div class="ci-n" data-i18n="cert_iso_name">ISO 9001:2015</div><div class="ci-d" data-i18n="cert_iso_desc">Quản Lý Chất Lượng</div></div>
+<div class="ci"><div class="ci-ic">🇯🇵</div><div class="ci-n" data-i18n="cert_japan_name">Japanese Tech</div><div class="ci-d" data-i18n="cert_japan_desc">Công Nghệ Số 1 Nhật Bản</div></div>
+<div class="ci"><div class="ci-ic">🌱</div><div class="ci-n" data-i18n="cert_eco_name">Eco-Friendly</div><div class="ci-d" data-i18n="cert_eco_desc">Thân Thiện Môi Trường</div></div>
+<div class="ci"><div class="ci-ic">⚡</div><div class="ci-n" data-i18n="cert_est_name">Thành Lập 2015</div><div class="ci-d" data-i18n="cert_est_desc">MST: 2400764878</div></div>
+<div class="ci"><div class="ci-ic">🗺️</div><div class="ci-n" data-i18n="cert_region_name">Miền Bắc</div><div class="ci-d" data-i18n="cert_region_desc">Thị Trường Trọng Tâm</div></div>
+</div></div>
 </div>
-
 <!-- CONTACT -->
 <section class="contact sp" id="lien-he">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:clamp(36px,5vw,60px)">
-      <div class="tag rev" style="margin:0 auto clamp(12px,2vw,16px)">📬 Liên Hệ</div>
-      <h2 class="h2 rev rd1" style="text-align:center">Bắt Đầu <em>Dự Án</em> Của Bạn</h2>
-    </div>
-    <div class="cg">
-      <div class="rev">
-        <p class="lead">Đội ngũ chuyên gia sẵn sàng tư vấn miễn phí và đồng hành từ ý tưởng đến hoàn thiện.</p>
-        <div class="ci-list">
-          <div class="cit"><div class="cit-ic">📍</div><div><div class="cit-l">Văn Phòng</div><div class="cit-v">Số 167 Trần Nguyên Hãn,P Bắc Giang , Bắc Ninh</div></div></div>
-          <div class="cit"><div class="cit-ic">🏭</div><div><div class="cit-l">Sản Xuất Tại</div><div class="cit-v">KCN Thọ Xương,P Bắc Giang , Bắc Ninh</div></div></div>
-        </div>
-      </div>
-     <div class="cf rev rd2">
-        <div class="cf-ti">Nhận Tư Vấn Ngay</div>
-        <div class="cf-sub">Để lại số điện thoại, chuyên gia của chúng tôi sẽ gọi lại trong 5 phút.</div>
-        
-        <!-- Đặt id để Javascript gọi đến -->
-        <form id="contactForm" name="submit-to-google-sheet">
-          <div class="fg">
-            <label class="fl">Số Điện Thoại Của Bạn</label>
-            <!-- Name='Phone' phải khớp với e.parameter.Phone trong Apps Script -->
-            <input class="fin" type="tel" name="Phone" placeholder="Ví dụ: 0981 xxx xxx" required>
-          </div>
-          
-          <button type="submit" id="btnSubmit" class="sbtn">🚀 Yêu Cầu Gọi Lại</button>
-        </form>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div style="text-align:center;margin-bottom:clamp(36px,5vw,60px)">
+<div class="tag rev" data-i18n="contact_tag" style="margin:0 auto clamp(12px,2vw,16px)">📬 Liên Hệ</div>
+<h2 class="h2 rev rd1" data-i18n-html="contact_title" style="text-align:center">Bắt Đầu <em>Dự Án</em> Của Bạn</h2>
+</div>
+<div class="cg">
+<div class="rev">
+<p class="lead" data-i18n="contact_lead">Đội ngũ chuyên gia sẵn sàng tư vấn miễn phí và đồng hành từ ý tưởng đến hoàn thiện.</p>
+<div class="ci-list">
+<div class="cit"><div class="cit-ic">📍</div><div><div class="cit-l" data-i18n="contact_office">Văn Phòng</div><div class="cit-v" data-i18n="contact_office_value">Số 167 Trần Nguyên Hãn,P Bắc Giang , Bắc Ninh</div></div></div>
+<div class="cit"><div class="cit-ic">🏭</div><div><div class="cit-l" data-i18n="contact_factory">Sản Xuất Tại</div><div class="cit-v" data-i18n="contact_factory_value">KCN Thọ Xương,P Bắc Giang , Bắc Ninh</div></div></div>
+</div>
+</div>
+<div class="cf rev rd2">
+<div class="cf-ti" data-i18n="form_title">Nhận Tư Vấn Ngay</div>
+<div class="cf-sub" data-i18n="form_sub">Để lại số điện thoại, chuyên gia của chúng tôi sẽ gọi lại trong 5 phút.</div>
+<!-- Đặt id để Javascript gọi đến -->
+<form id="contactForm" name="submit-to-google-sheet">
+<div class="fg">
+<label class="fl" data-i18n="form_phone_label">Số Điện Thoại Của Bạn</label>
+<!-- Name='Phone' phải khớp với e.parameter.Phone trong Apps Script -->
+<input class="fin" data-i18n-placeholder="form_phone_placeholder" name="Phone" placeholder="Ví dụ: 0981 xxx xxx" required="" type="tel"/>
+</div>
+<button class="sbtn" data-i18n="form_button" id="btnSubmit" type="submit">🚀 Yêu Cầu Gọi Lại</button>
+</form>
+</div>
+</div>
+</div>
 </section>
-
 <!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="fg-grid">
-      <div>
-        <a class="fl-logo" href="#">MEN<span>MAX</span></a>
-        <p class="fl-tag">Công Ty TNHH Sản Xuất Sơn Quốc Tế — Kiến tạo vẻ đẹp bền vững cho mọi công trình Việt Nam với công nghệ hàng đầu Nhật Bản.</p>
-      </div>
-      <div class="fc"><h4>Sản Phẩm</h4><ul><li><a href="#">Sơn Nội Thất</a></li><li><a href="#">Sơn Ngoại Thất</a></li><li><a href="#">Sơn Chống Thấm</a></li><li><a href="#">Sơn Lót</a></li><li><a href="#">Bột Bả Tường</a></li></ul></div>
-      <div class="fc"><h4>Dịch Vụ</h4><ul><li><a href="#">Thi Công Sơn</a></li><li><a href="#">Tư Vấn Màu</a></li><li><a href="#">Khảo Sát Miễn Phí</a></li><li><a href="#">Bảo Hành</a></li></ul></div>
-      <div class="fc"><h4>Công Ty</h4><ul><li><a href="#">Giới Thiệu</a></li><li><a href="#">Công Trình</a></li><li><a href="#">Chứng Nhận</a></li><li><a href="#">Liên Hệ</a></li></ul></div>
-    </div>
-    <div class="fb">
-      <div class="fb-c">© 2024 Công Ty TNHH Sản Xuất Sơn Quốc Tế · MST 2400764878</div>
-      <div class="fb-i">✓ ISO 9001:2015 Certified</div>
-    </div>
-  </div>
+<div class="container">
+<div class="fg-grid">
+<div>
+<a class="fl-logo" href="#">MEN<span>MAX</span></a>
+<p class="fl-tag" data-i18n="footer_intro">Công Ty TNHH Sản Xuất Sơn Quốc Tế — Kiến tạo vẻ đẹp bền vững cho mọi công trình Việt Nam với công nghệ hàng đầu Nhật Bản.</p>
+</div>
+<div class="fc"><h4 data-i18n="footer_products">Sản Phẩm</h4><ul><li><a data-i18n="footer_interior" href="#">Sơn Nội Thất</a></li><li><a data-i18n="footer_exterior" href="#">Sơn Ngoại Thất</a></li><li><a data-i18n="footer_waterproof" href="#">Sơn Chống Thấm</a></li><li><a data-i18n="footer_primer" href="#">Sơn Lót</a></li><li><a data-i18n="footer_putty" href="#">Bột Bả Tường</a></li></ul></div>
+<div class="fc"><h4 data-i18n="footer_services">Dịch Vụ</h4><ul><li><a data-i18n="footer_application" href="#">Thi Công Sơn</a></li><li><a data-i18n="footer_color_consult" href="#">Tư Vấn Màu</a></li><li><a data-i18n="footer_free_survey" href="#">Khảo Sát Miễn Phí</a></li><li><a data-i18n="footer_warranty" href="#">Bảo Hành</a></li></ul></div>
+<div class="fc"><h4 data-i18n="footer_company">Công Ty</h4><ul><li><a data-i18n="nav_about" href="#">Giới Thiệu</a></li><li><a data-i18n="nav_projects" href="#">Công Trình</a></li><li><a data-i18n="footer_certifications" href="#">Chứng Nhận</a></li><li><a data-i18n="nav_contact" href="#">Liên Hệ</a></li></ul></div>
+</div>
+<div class="fb">
+<div class="fb-c" data-i18n="footer_copyright">© 2024 Công Ty TNHH Sản Xuất Sơn Quốc Tế · MST 2400764878</div>
+<div class="fb-i" data-i18n="footer_iso">✓ ISO 9001:2015 Certified</div>
+</div>
+</div>
 </footer>
-
 <script>
+/* ===== MENMAX MULTILINGUAL CONTROLLER ===== */
+const MENMAX_TRANSLATIONS = {"vi":{"meta_title":"MENMAX | Sơn Quốc Tế Cao Cấp","meta_description":"Sơn MENMAX — Kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam. Công nghệ Nhật Bản.","language_label":"Chọn ngôn ngữ","language_changed":"Đã chuyển sang Tiếng Việt","nav_about":"Giới Thiệu","nav_products":"Sản Phẩm","nav_projects":"Công Trình","nav_process":"Quy Trình","nav_contact":"📞 Liên Hệ","mobile_call":"📞 Nhấn vào đây","hero_badge":"Từ 2010 · Công Nghệ Nhật Bản","hero_title":"Màu Sắc <span class=\"hl\">Bất Tận</span>","hero_sub":"Sơn MENMAX — kiến tạo vẻ đẹp bền vững cho mọi không gian Việt Nam.","hero_products":"🎨 Khám Phá Sản Phẩm <span class=\"arr\">→</span>","hero_projects":"Xem Công Trình","scroll_down":"Cuộn xuống","stats_experience":"Năm Kinh Nghiệm","stats_projects":"Công Trình","stats_iso":"9001:2015","stats_quality":"Chất Lượng","mq_interior":"<span class=\"mdot md-o\"></span>Sơn Nội Thất Cao Cấp","mq_exterior":"<span class=\"mdot md-t\"></span>Sơn Ngoại Thất","mq_waterproof":"<span class=\"mdot md-y\"></span>Sơn Chống Thấm Đa Năng","mq_putty":"<span class=\"mdot md-p\"></span>Bột Bả Tường","mq_primer":"<span class=\"mdot md-o\"></span>Sơn Lót Chống Kiềm","mq_decorative":"<span class=\"mdot md-t\"></span>Sơn Trang Trí","mq_application":"<span class=\"mdot md-y\"></span>Thi Công Chuyên Nghiệp","mq_japanese":"<span class=\"mdot md-p\"></span>Công Nghệ Nhật Bản","about_tag":"🏭 Về Chúng Tôi","about_title":"Hành Trình <em>Vẽ Nên</em> Việt Nam","about_p1":"Công Ty TNHH Sản Xuất Sơn Quốc Tế thành lập năm 2015, thương hiệu Sơn MENMAX ra đời từ năm 2010 với công nghệ hàng đầu Nhật Bản. Chúng tôi không ngừng đổi mới qua hàng trăm công trình trên toàn quốc.","about_p2":"Sản phẩm được nhiệt đới hóa hoàn toàn, tối ưu cho khí hậu Việt Nam và được các kiến trúc sư, kỹ sư cùng nhà thầu hàng đầu tin dùng.","feat_direct":"Sản Xuất Trực Tiếp","feat_direct_sub":"KCN Thọ Xương, P. Bắc Giang, Bắc Ninh","feat_japan":"Công Nghệ Nhật Bản","feat_japan_sub":"Công nghệ sơn hàng đầu thế giới","feat_iso":"ISO 9001:2015","feat_iso_sub":"Chứng nhận quốc tế","feat_tropical":"Nhiệt Đới Hóa","feat_tropical_sub":"Phù hợp khí hậu Việt Nam","free_consult":"Tư Vấn Miễn Phí <span class=\"arr\">→</span>","color_interior":"Sơn Nội Thất","color_orange":"Cam Rực Rỡ","color_waterproof":"Chống Thấm","color_teal":"Xanh Ngọc","color_primer":"Sơn Lót","color_yellow":"Vàng Rạng Ngời","color_exterior":"Ngoại Thất","color_purple":"Tím Hoàng Gia","products_tag":"🎨 Sản Phẩm","products_title":"Dòng Sản Phẩm <em>Cao Cấp</em>","quote_now":"Báo giá ngay →","prod1_name":"Sơn Nội Thất Cao Cấp","prod1_desc":"Độ bền màu vượt trội, không độc hại, an toàn cho gia đình. Phủ mịn đều và chống ố vàng lâu dài.","prod1_badge":"Bán Chạy #1","prod2_name":"Sơn Ngoại Thất Siêu Bền","prod2_desc":"Chống tia UV, mưa axit và nhiệt độ cao. Giữ màu tươi sáng đến 10 năm trong mọi điều kiện.","prod2_badge":"Bền 10 Năm","prod3_name":"Sơn Chống Thấm Đa Năng","prod3_desc":"Chống thấm toàn diện cho mái, tường và sàn. Co giãn cao, bịt kín vết nứt vi mô hiệu quả.","prod3_badge":"Đa Năng","prod4_name":"Sơn Lót Chống Kiềm","prod4_desc":"Tạo lớp nền hoàn hảo, ngăn kiềm tấn công và tăng tối đa độ bám dính cho lớp sơn phủ.","prod4_badge":"Nội + Ngoại","prod5_name":"Sơn Bóng Siêu Cao Cấp","prod5_desc":"Độ bóng như gương, phản chiếu ánh sáng đẹp. Kháng bẩn, phù hợp với không gian sang trọng.","prod5_badge":"Siêu Bóng","prod6_name":"Bột Bả Tường Cao Cấp","prod6_desc":"Tạo nền siêu mịn, chống nứt và dễ thi công cho cả nội thất lẫn ngoại thất.","prod6_badge":"Nội + Ngoại","projects_tag":"🏗️ Công Trình Tiêu Biểu","projects_title":"Dấu Ấn Trên <em>Từng Công Trình</em>","project1_badge":"KCN · 2024","project1_name":"Nhà Máy Goertek Vina","project1_desc":"Sơn nền công nghiệp & ngoại thất · Bắc Ninh","project2_badge":"Đô Thị · 2023","project2_name":"Khu Biệt Thự Ecopark","project2_desc":"Sơn ngoại thất cao cấp · Hưng Yên","project3_badge":"Nhà Ở · 2023","project3_name":"Căn Hộ Vinhomes Central","project3_desc":"Sơn nội thất toàn diện · TP.HCM","project4_badge":"Đô Thị · 2024","project4_name":"Vinhomes Ocean Park 2","project4_desc":"Sơn ngoại thất liền kề · Hưng Yên","project5_badge":"Dân Dụng · 2024","project5_name":"Biệt Thự Hiện Đại","project5_desc":"Sơn trang trí & bóng gương","process_tag":"🔄 Quy Trình","process_title":"Từ Tư Vấn Đến <span class=\"teal\">Hoàn Thiện</span>","step1_name":"Khảo Sát & Tư Vấn","step1_desc":"Kỹ sư đến khảo sát trực tiếp, phân tích và tư vấn giải pháp tối ưu.","step2_name":"Lên Màu & Báo Giá","step2_desc":"Chọn từ hơn 10.000 màu sắc. Báo giá minh bạch trong 24 giờ.","step3_name":"Thi Công Chuyên Nghiệp","step3_desc":"Đội ngũ thợ được đào tạo bài bản, tuân thủ quy trình ISO và đúng tiến độ cam kết.","step4_name":"Bàn Giao & Bảo Hành","step4_desc":"Nghiệm thu kỹ lưỡng, bàn giao đúng chất lượng và bảo hành 5 năm.","testi_tag":"💬 Khách Hàng Nói Gì","testi_title":"Niềm Tin Từ <em>Hàng Nghìn</em> Công Trình","testi1_quote":"“Sơn MENMAX bám dính và bền màu tuyệt vời. Sau 3 năm vẫn tươi như mới. Tôi rất ấn tượng với chất lượng và dịch vụ!”","testi1_role":"Chủ Đầu Tư · Hà Nội","testi2_quote":"“Là một kiến trúc sư khó tính, MENMAX vẫn là lựa chọn hàng đầu của tôi. Màu chuẩn xác và bề mặt mịn hoàn hảo.”","testi2_role":"Kiến Trúc Sư · Studio H","testi3_quote":"“Chúng tôi dùng MENMAX cho 200 phòng khách sạn. Chi phí hợp lý, chất lượng cao cấp và đội thi công rất chuyên nghiệp!”","testi3_role":"Giám Đốc · Emerald Hotel","testi4_quote":"“Nhà thầu của tôi luôn ưu tiên MENMAX. Khả năng chống thấm tốt, không bong tróc sau nhiều mùa mưa. Một đối tác đáng tin cậy!”","testi4_role":"Giám Đốc · XD Minh Phát","cert_iso_name":"ISO 9001:2015","cert_iso_desc":"Quản Lý Chất Lượng","cert_japan_name":"Công Nghệ Nhật Bản","cert_japan_desc":"Công Nghệ Sơn Hàng Đầu","cert_eco_name":"Thân Thiện Môi Trường","cert_eco_desc":"An Toàn & Bền Vững","cert_est_name":"Thành Lập 2015","cert_est_desc":"MST: 2400764878","cert_region_name":"Miền Bắc","cert_region_desc":"Thị Trường Trọng Tâm","contact_tag":"📬 Liên Hệ","contact_title":"Bắt Đầu <em>Dự Án</em> Của Bạn","contact_lead":"Đội ngũ chuyên gia sẵn sàng tư vấn miễn phí và đồng hành cùng bạn từ ý tưởng đến hoàn thiện.","contact_office":"Văn Phòng","contact_factory":"Sản Xuất Tại","contact_office_value":"Số 167 Trần Nguyên Hãn, P. Bắc Giang, Bắc Ninh","contact_factory_value":"KCN Thọ Xương, P. Bắc Giang, Bắc Ninh","form_title":"Nhận Tư Vấn Ngay","form_sub":"Để lại số điện thoại, chuyên gia của chúng tôi sẽ gọi lại trong 5 phút.","form_phone_label":"Số Điện Thoại Của Bạn","form_phone_placeholder":"Ví dụ: 0981 xxx xxx","form_button":"🚀 Yêu Cầu Gọi Lại","form_invalid":"❌ Số điện thoại không hợp lệ","form_success":"✅ Đã Gửi Thành Công!","form_sent_long":"✅ Đã gửi! Chúng tôi sẽ phản hồi sớm","footer_intro":"Công Ty TNHH Sản Xuất Sơn Quốc Tế — Kiến tạo vẻ đẹp bền vững cho mọi công trình Việt Nam với công nghệ hàng đầu Nhật Bản.","footer_products":"Sản Phẩm","footer_services":"Dịch Vụ","footer_company":"Công Ty","footer_interior":"Sơn Nội Thất","footer_exterior":"Sơn Ngoại Thất","footer_waterproof":"Sơn Chống Thấm","footer_primer":"Sơn Lót","footer_putty":"Bột Bả Tường","footer_application":"Thi Công Sơn","footer_color_consult":"Tư Vấn Màu","footer_free_survey":"Khảo Sát Miễn Phí","footer_warranty":"Bảo Hành","footer_certifications":"Chứng Nhận","footer_copyright":"© 2024 Công Ty TNHH Sản Xuất Sơn Quốc Tế · MST 2400764878","footer_iso":"✓ Chứng nhận ISO 9001:2015"},"en":{"meta_title":"MENMAX | Premium International Paint","meta_description":"MENMAX Paint — creating lasting beauty for every Vietnamese space with Japanese technology.","language_label":"Choose language","language_changed":"Language changed to English","nav_about":"About Us","nav_products":"Products","nav_projects":"Projects","nav_process":"Process","nav_contact":"📞 Contact","mobile_call":"📞 Call now","hero_badge":"Since 2010 · Japanese Technology","hero_title":"Infinite <span class=\"hl\">Colors</span>","hero_sub":"MENMAX Paint — creating lasting beauty for every space in Vietnam.","hero_products":"🎨 Explore Products <span class=\"arr\">→</span>","hero_projects":"View Projects","scroll_down":"Scroll down","stats_experience":"Years of Experience","stats_projects":"Projects","stats_iso":"9001:2015","stats_quality":"Quality","mq_interior":"<span class=\"mdot md-o\"></span>Premium Interior Paint","mq_exterior":"<span class=\"mdot md-t\"></span>Exterior Paint","mq_waterproof":"<span class=\"mdot md-y\"></span>Multi-purpose Waterproofing","mq_putty":"<span class=\"mdot md-p\"></span>Wall Putty","mq_primer":"<span class=\"mdot md-o\"></span>Alkali-resistant Primer","mq_decorative":"<span class=\"mdot md-t\"></span>Decorative Paint","mq_application":"<span class=\"mdot md-y\"></span>Professional Application","mq_japanese":"<span class=\"mdot md-p\"></span>Japanese Technology","about_tag":"🏭 About Us","about_title":"A Journey of <em>Painting</em> Vietnam","about_p1":"International Paint Manufacturing Co., Ltd. was established in 2015, while the MENMAX paint brand began in 2010 with leading Japanese technology. We continue to innovate through hundreds of projects nationwide.","about_p2":"Our products are fully tropicalized for Vietnam’s climate and trusted by leading architects, engineers and contractors.","feat_direct":"Direct Manufacturing","feat_direct_sub":"Tho Xuong Industrial Park, Bac Giang Ward, Bac Ninh","feat_japan":"Japanese Technology","feat_japan_sub":"World-leading paint technology","feat_iso":"ISO 9001:2015","feat_iso_sub":"International certification","feat_tropical":"Tropicalized Formula","feat_tropical_sub":"Designed for Vietnam’s climate","free_consult":"Free Consultation <span class=\"arr\">→</span>","color_interior":"Interior Paint","color_orange":"Vibrant Orange","color_waterproof":"Waterproofing","color_teal":"Jade Teal","color_primer":"Primer","color_yellow":"Radiant Yellow","color_exterior":"Exterior Paint","color_purple":"Royal Purple","products_tag":"🎨 Products","products_title":"Premium <em>Product Lines</em>","quote_now":"Get a quote →","prod1_name":"Premium Interior Paint","prod1_desc":"Outstanding color retention, non-toxic and family-safe. Smooth, even coverage with long-lasting yellowing resistance.","prod1_badge":"#1 Best Seller","prod2_name":"Ultra-durable Exterior Paint","prod2_desc":"Resists UV rays, acid rain and high temperatures. Keeps colors bright for up to 10 years in all conditions.","prod2_badge":"10-Year Durability","prod3_name":"Multi-purpose Waterproofing Paint","prod3_desc":"Comprehensive protection for roofs, walls and floors. High elasticity effectively seals micro-cracks.","prod3_badge":"Multi-purpose","prod4_name":"Alkali-resistant Primer","prod4_desc":"Creates the ideal base, blocks alkali attack and maximizes adhesion for the topcoat.","prod4_badge":"Interior + Exterior","prod5_name":"Ultra-premium Gloss Paint","prod5_desc":"Mirror-like gloss with beautiful light reflection. Stain resistant and ideal for luxurious spaces.","prod5_badge":"Ultra Gloss","prod6_name":"Premium Wall Putty","prod6_desc":"Creates an ultra-smooth, crack-resistant base that is easy to apply indoors and outdoors.","prod6_badge":"Interior + Exterior","projects_tag":"🏗️ Featured Projects","projects_title":"Our Mark on <em>Every Project</em>","project1_badge":"Industrial Park · 2024","project1_name":"Goertek Vina Factory","project1_desc":"Industrial floor & exterior coatings · Bac Ninh","project2_badge":"Urban · 2023","project2_name":"Ecopark Villa Complex","project2_desc":"Premium exterior paint · Hung Yen","project3_badge":"Residential · 2023","project3_name":"Vinhomes Central Apartment","project3_desc":"Complete interior painting · Ho Chi Minh City","project4_badge":"Urban · 2024","project4_name":"Vinhomes Ocean Park 2","project4_desc":"Townhouse exterior painting · Hung Yen","project5_badge":"Residential · 2024","project5_name":"Modern Villa","project5_desc":"Decorative & mirror-gloss paint","process_tag":"🔄 Process","process_title":"From Consultation to <span class=\"teal\">Completion</span>","step1_name":"Survey & Consultation","step1_desc":"Our engineers conduct an on-site survey, analyze the surface and recommend the optimal solution.","step2_name":"Color Selection & Quotation","step2_desc":"Choose from more than 10,000 colors and receive a transparent quotation within 24 hours.","step3_name":"Professional Application","step3_desc":"Trained painters follow ISO procedures and deliver according to the committed schedule.","step4_name":"Handover & Warranty","step4_desc":"Thorough inspection, quality-assured handover and a 5-year warranty.","testi_tag":"💬 What Customers Say","testi_title":"Trusted by <em>Thousands</em> of Projects","testi1_quote":"“MENMAX paint has excellent adhesion and color durability. After three years, it still looks fresh. I am very impressed by the quality and service!”","testi1_role":"Investor · Hanoi","testi2_quote":"“As a demanding architect, MENMAX remains my first choice. The colors are accurate and the finish is perfectly smooth.”","testi2_role":"Architect · Studio H","testi3_quote":"“We used MENMAX for 200 hotel rooms. The cost was reasonable, the quality premium and the application team highly professional!”","testi3_role":"Director · Emerald Hotel","testi4_quote":"“Our contractors always prioritize MENMAX. Its waterproofing performs well and does not peel after many rainy seasons. A dependable partner!”","testi4_role":"Director · Minh Phat Construction","cert_iso_name":"ISO 9001:2015","cert_iso_desc":"Quality Management","cert_japan_name":"Japanese Technology","cert_japan_desc":"Leading Paint Technology","cert_eco_name":"Eco-Friendly","cert_eco_desc":"Safe & Sustainable","cert_est_name":"Established 2015","cert_est_desc":"Tax ID: 2400764878","cert_region_name":"Northern Vietnam","cert_region_desc":"Core Market","contact_tag":"📬 Contact","contact_title":"Start <em>Your Project</em>","contact_lead":"Our specialists are ready to provide free advice and support you from the first idea through completion.","contact_office":"Office","contact_factory":"Manufacturing Site","contact_office_value":"167 Trần Nguyên Hãn, Bắc Giang Ward, Bắc Ninh","contact_factory_value":"Thọ Xương Industrial Park, Bắc Giang Ward, Bắc Ninh","form_title":"Get Advice Now","form_sub":"Leave your phone number and our specialist will call you back within 5 minutes.","form_phone_label":"Your Phone Number","form_phone_placeholder":"Example: 0981 xxx xxx","form_button":"🚀 Request a Call Back","form_invalid":"❌ Invalid phone number","form_success":"✅ Submitted Successfully!","form_sent_long":"✅ Sent! We will respond shortly","footer_intro":"International Paint Manufacturing Co., Ltd. — creating lasting beauty for every Vietnamese project with leading Japanese technology.","footer_products":"Products","footer_services":"Services","footer_company":"Company","footer_interior":"Interior Paint","footer_exterior":"Exterior Paint","footer_waterproof":"Waterproofing Paint","footer_primer":"Primer","footer_putty":"Wall Putty","footer_application":"Paint Application","footer_color_consult":"Color Consultation","footer_free_survey":"Free Site Survey","footer_warranty":"Warranty","footer_certifications":"Certifications","footer_copyright":"© 2024 International Paint Manufacturing Co., Ltd. · Tax ID 2400764878","footer_iso":"✓ ISO 9001:2015 Certified"},"zh":{"meta_title":"MENMAX | 高端国际涂料","meta_description":"MENMAX 涂料——采用日本技术，为越南每一处空间打造持久之美。","language_label":"选择语言","language_changed":"语言已切换为中文","nav_about":"关于我们","nav_products":"产品系列","nav_projects":"工程案例","nav_process":"服务流程","nav_contact":"📞 联系我们","mobile_call":"📞 立即致电","hero_badge":"始于 2010 · 日本技术","hero_title":"无限 <span class=\"hl\">色彩</span>","hero_sub":"MENMAX 涂料——为越南每一处空间打造持久之美。","hero_products":"🎨 探索产品 <span class=\"arr\">→</span>","hero_projects":"查看工程案例","scroll_down":"向下滚动","stats_experience":"年行业经验","stats_projects":"工程项目","stats_iso":"9001:2015","stats_quality":"品质保证","mq_interior":"<span class=\"mdot md-o\"></span>高端内墙漆","mq_exterior":"<span class=\"mdot md-t\"></span>外墙漆","mq_waterproof":"<span class=\"mdot md-y\"></span>多功能防水涂料","mq_putty":"<span class=\"mdot md-p\"></span>墙面腻子","mq_primer":"<span class=\"mdot md-o\"></span>抗碱底漆","mq_decorative":"<span class=\"mdot md-t\"></span>装饰涂料","mq_application":"<span class=\"mdot md-y\"></span>专业施工","mq_japanese":"<span class=\"mdot md-p\"></span>日本技术","about_tag":"🏭 关于我们","about_title":"用色彩 <em>描绘</em> 越南","about_p1":"国际涂料生产有限责任公司成立于 2015 年，MENMAX 涂料品牌始于 2010 年，并采用领先的日本技术。我们通过遍布全国的数百个项目持续创新。","about_p2":"产品针对越南气候完成全面热带化适配，深受领先建筑师、工程师和承包商信赖。","feat_direct":"厂家直接生产","feat_direct_sub":"北宁省北江坊寿昌工业区","feat_japan":"日本技术","feat_japan_sub":"世界领先的涂料技术","feat_iso":"ISO 9001:2015","feat_iso_sub":"国际认证","feat_tropical":"热带气候适配","feat_tropical_sub":"专为越南气候设计","free_consult":"免费咨询 <span class=\"arr\">→</span>","color_interior":"内墙漆","color_orange":"活力橙","color_waterproof":"防水涂料","color_teal":"翡翠青","color_primer":"底漆","color_yellow":"耀眼黄","color_exterior":"外墙漆","color_purple":"皇家紫","products_tag":"🎨 产品系列","products_title":"高端 <em>产品系列</em>","quote_now":"立即询价 →","prod1_name":"高端内墙漆","prod1_desc":"色彩持久、无毒环保、呵护家人。漆膜细腻均匀，长期抗黄变。","prod1_badge":"畅销第 1 名","prod2_name":"超耐候外墙漆","prod2_desc":"抵御紫外线、酸雨和高温，在各种环境下可保持亮丽色彩长达 10 年。","prod2_badge":"耐久 10 年","prod3_name":"多功能防水涂料","prod3_desc":"全面保护屋顶、墙面和地面。高弹性配方可有效封闭细微裂缝。","prod3_badge":"多功能","prod4_name":"抗碱底漆","prod4_desc":"打造理想基层，阻隔碱性侵蚀，并显著提升面漆附着力。","prod4_badge":"内外墙通用","prod5_name":"超高端亮光漆","prod5_desc":"镜面般高光泽，呈现优美光影。抗污耐洁，适合高雅空间。","prod5_badge":"超高光","prod6_name":"高端墙面腻子","prod6_desc":"打造超细腻、抗开裂的基层，内外墙均易于施工。","prod6_badge":"内外墙通用","projects_tag":"🏗️ 代表工程","projects_title":"为 <em>每一个工程</em> 留下印记","project1_badge":"工业园 · 2024","project1_name":"歌尔越南工厂","project1_desc":"工业地坪与外墙涂装 · 北宁","project2_badge":"城市项目 · 2023","project2_name":"Ecopark 别墅区","project2_desc":"高端外墙涂装 · 兴安","project3_badge":"住宅项目 · 2023","project3_name":"Vinhomes Central 公寓","project3_desc":"全套内墙涂装 · 胡志明市","project4_badge":"城市项目 · 2024","project4_name":"Vinhomes Ocean Park 2","project4_desc":"联排住宅外墙涂装 · 兴安","project5_badge":"民用项目 · 2024","project5_name":"现代别墅","project5_desc":"装饰涂料与镜面高光漆","process_tag":"🔄 服务流程","process_title":"从咨询到 <span class=\"teal\">圆满交付</span>","step1_name":"勘察与咨询","step1_desc":"工程师到现场勘察、分析基层情况，并提供最优解决方案。","step2_name":"选色与报价","step2_desc":"可从 10,000 多种颜色中选择，并在 24 小时内获得透明报价。","step3_name":"专业施工","step3_desc":"施工团队经过系统培训，遵循 ISO 流程并按承诺工期交付。","step4_name":"验收与质保","step4_desc":"严格验收、品质交付，并提供 5 年质保。","testi_tag":"💬 客户评价","testi_title":"获得 <em>数千个</em> 工程项目的信赖","testi1_quote":"“MENMAX 涂料附着力强、色彩持久。使用三年后依然鲜亮如新，品质与服务都令人印象深刻！”","testi1_role":"投资方 · 河内","testi2_quote":"“作为一名要求严格的建筑师，MENMAX 始终是我的首选。颜色准确，表面效果细腻平整。”","testi2_role":"建筑师 · Studio H","testi3_quote":"“我们在 200 间酒店客房中使用 MENMAX。价格合理、品质高端，施工团队也非常专业！”","testi3_role":"总经理 · Emerald Hotel","testi4_quote":"“我们的承包商一直优先选择 MENMAX。防水效果好，经历多个雨季也不脱落，是值得信赖的合作伙伴！”","testi4_role":"总经理 · Minh Phat 建设公司","cert_iso_name":"ISO 9001:2015","cert_iso_desc":"质量管理体系","cert_japan_name":"日本技术","cert_japan_desc":"领先涂料技术","cert_eco_name":"环保产品","cert_eco_desc":"安全与可持续","cert_est_name":"成立于 2015 年","cert_est_desc":"税号：2400764878","cert_region_name":"越南北部","cert_region_desc":"核心市场","contact_tag":"📬 联系我们","contact_title":"开启 <em>您的项目</em>","contact_lead":"我们的专业团队可提供免费咨询，并从创意阶段一路陪伴您直至项目完成。","contact_office":"办公室","contact_factory":"生产基地","contact_office_value":"越南北宁省北江坊陈元汉街 167 号","contact_factory_value":"越南北宁省北江坊寿昌工业区","form_title":"立即获取咨询","form_sub":"请留下电话号码，我们的专家将在 5 分钟内回电。","form_phone_label":"您的电话号码","form_phone_placeholder":"例如：0981 xxx xxx","form_button":"🚀 请求回电","form_invalid":"❌ 电话号码格式无效","form_success":"✅ 提交成功！","form_sent_long":"✅ 已提交！我们会尽快回复","footer_intro":"国际涂料生产有限责任公司——采用领先的日本技术，为越南每一个工程打造持久之美。","footer_products":"产品系列","footer_services":"服务项目","footer_company":"公司信息","footer_interior":"内墙漆","footer_exterior":"外墙漆","footer_waterproof":"防水涂料","footer_primer":"底漆","footer_putty":"墙面腻子","footer_application":"涂装施工","footer_color_consult":"色彩咨询","footer_free_survey":"免费勘察","footer_warranty":"质保服务","footer_certifications":"资质认证","footer_copyright":"© 2024 国际涂料生产有限责任公司 · 税号 2400764878","footer_iso":"✓ 已通过 ISO 9001:2015 认证"}};
+
+(function initMenmaxI18n() {
+  const supported = ['vi', 'en', 'zh'];
+  const languageLabels = {vi:'VI', en:'EN', zh:'中文'};
+  const langSwitcher = document.getElementById('langSwitcher');
+  const langToggle = document.getElementById('langToggle');
+  const langCurrent = document.getElementById('langCurrent');
+  const langStatus = document.getElementById('langStatus');
+  const languageOptions = Array.from(document.querySelectorAll('.lang-option'));
+  let currentLang = supported.includes(document.documentElement.dataset.lang) ? document.documentElement.dataset.lang : 'vi';
+
+  function translateMeta(lang) {
+    const dictionary = MENMAX_TRANSLATIONS[lang] || MENMAX_TRANSLATIONS.vi;
+    document.title = dictionary.meta_title;
+    const selectors = [
+      ['meta[name="description"]', dictionary.meta_description],
+      ['meta[property="og:title"]', dictionary.meta_title],
+      ['meta[property="og:description"]', dictionary.meta_description],
+      ['meta[itemprop="name"]', dictionary.meta_title],
+      ['meta[itemprop="description"]', dictionary.meta_description],
+      ['meta[name="twitter:title"]', dictionary.meta_title],
+      ['meta[name="twitter:description"]', dictionary.meta_description]
+    ];
+    selectors.forEach(([selector, content]) => {
+      const element = document.querySelector(selector);
+      if (element) element.setAttribute('content', content);
+    });
+  }
+
+  function t(key) {
+    return (MENMAX_TRANSLATIONS[currentLang] && MENMAX_TRANSLATIONS[currentLang][key]) || MENMAX_TRANSLATIONS.vi[key] || key;
+  }
+
+  function applyLanguage(lang, options = {}) {
+    if (!supported.includes(lang)) lang = 'vi';
+    currentLang = lang;
+    document.body.classList.add('lang-switching');
+    document.documentElement.dataset.lang = lang;
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const key = element.dataset.i18n;
+      element.textContent = t(key);
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(element => {
+      const key = element.dataset.i18nHtml;
+      element.innerHTML = t(key);
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+      element.setAttribute('placeholder', t(element.dataset.i18nPlaceholder));
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(element => {
+      element.setAttribute('aria-label', t(element.dataset.i18nAria));
+      element.setAttribute('title', t(element.dataset.i18nAria));
+    });
+
+    translateMeta(lang);
+    langCurrent.textContent = languageLabels[lang];
+    languageOptions.forEach(option => option.setAttribute('aria-selected', String(option.dataset.lang === lang)));
+
+    if (options.persist) {
+      try { localStorage.setItem('menmax-language', lang); } catch (error) { /* Storage may be blocked. */ }
+    }
+    if (options.announce && langStatus) langStatus.textContent = t('language_changed');
+
+    window.requestAnimationFrame(() => {
+      window.setTimeout(() => document.body.classList.remove('lang-switching'), 90);
+    });
+  }
+
+  function closeLanguageMenu() {
+    langSwitcher.classList.remove('open');
+    langToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  langToggle.addEventListener('click', event => {
+    event.stopPropagation();
+    const open = !langSwitcher.classList.contains('open');
+    langSwitcher.classList.toggle('open', open);
+    langToggle.setAttribute('aria-expanded', String(open));
+  });
+
+  languageOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      applyLanguage(option.dataset.lang, {persist:true, announce:true});
+      closeLanguageMenu();
+      langToggle.focus({preventScroll:true});
+    });
+  });
+
+  document.addEventListener('click', event => {
+    if (!langSwitcher.contains(event.target)) closeLanguageMenu();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeLanguageMenu();
+  });
+
+  window.MENMAX_I18N = {
+    t,
+    getLanguage: () => currentLang,
+    setLanguage: lang => applyLanguage(lang, {persist:true, announce:true})
+  };
+
+  applyLanguage(currentLang, {persist:false, announce:false});
+})();
+</script><script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbxf5Sfau_EqGF2K_8-x3YQpB3VwChTX8JXH8FdDLBp2nIS95LmNP0sixByYvlThxH0j/exec';
 const form = document.forms['submit-to-google-sheet'];
   const btnSubmit = document.getElementById('btnSubmit');
@@ -731,7 +867,7 @@ const form = document.forms['submit-to-google-sheet'];
       phoneInput.style.borderColor = '#FF3F6C'; // Viền đỏ
       phoneInput.style.boxShadow = '0 0 0 4px rgba(255, 63, 108, 0.1)';
       
-      btnSubmit.innerHTML = '❌ Số điện thoại không hợp lệ';
+      btnSubmit.innerHTML = window.MENMAX_I18N.t('form_invalid');
       btnSubmit.style.background = 'linear-gradient(135deg, #FF3F6C, #E11D48)'; // Nút đỏ
       
       // Trả lại trạng thái bình thường sau 2.5 giây để nhập lại
@@ -751,7 +887,7 @@ const form = document.forms['submit-to-google-sheet'];
 
     // --- BƯỚC 2: GỬI NGẦM (FIRE AND FORGET) GIỐNG NHƯ CŨ ---
     let originalText = btnSubmit.innerHTML;
-    btnSubmit.innerHTML = '✅ Đã Gửi Thành Công!';
+    btnSubmit.innerHTML = window.MENMAX_I18N.t('form_success');
     btnSubmit.style.background = 'linear-gradient(135deg,#22C55E,#16A34A)';
     btnSubmit.style.opacity = '1';
     btnSubmit.disabled = true;
@@ -789,6 +925,8 @@ const nav=document.getElementById('mainNav'),ham=document.getElementById('ham'),
 let mOpen=false;
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
 ham.addEventListener('click',()=>{
+  document.getElementById('langSwitcher')?.classList.remove('open');
+  document.getElementById('langToggle')?.setAttribute('aria-expanded','false');
   mOpen=!mOpen;mob.classList.toggle('open',mOpen);
   const sp=ham.querySelectorAll('span');
   sp[0].style.transform=mOpen?'rotate(45deg) translate(5px,5px)':'';
@@ -812,9 +950,9 @@ const hs=document.querySelector('.hero-stats');if(hs)so.observe(hs);
 
 /* --- Form --- */
 function doSub(btn){
-  btn.textContent='✅ Đã Gửi! Chúng Tôi Sẽ Phản Hồi Sớm';
+  btn.textContent=window.MENMAX_I18N.t('form_sent_long');
   btn.style.background='linear-gradient(135deg,#22C55E,#16A34A)';
-  setTimeout(()=>{btn.textContent='🚀 Gửi Yêu Cầu Ngay';btn.style.background=''},4500);
+  setTimeout(()=>{btn.textContent=window.MENMAX_I18N.t('form_button');btn.style.background=''},4500);
 }
 
 </script>
